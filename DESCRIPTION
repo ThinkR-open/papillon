@@ -1,14 +1,25 @@
 Package: visualidentity
 Title: Helps creating company visual identity
 Version: 0.0.0.9000
-Authors@R: person("Sébastien", "Rochette", email = "sebastien@thinkr.fr", role = c("aut", "cre"))
-Description: Helps creating company visual identity. Build your templates for your package vignettes,
-    reports with {bookdown}, package presentation with {pkgdown}. Allow for code folding.
-Depends: R (>= 3.5.2)
+Authors@R: 
+    person(given = "Sébastien",
+           family = "Rochette",
+           role = c("aut", "cre"),
+           email = "sebastien@thinkr.fr")
+Description: Helps creating company visual identity. Build your
+    templates for your package vignettes, reports with {bookdown}, package
+    presentation with {pkgdown}. Allow for code folding.
 License: What license is it under?
-Encoding: UTF-8
-LazyData: true
+Imports: 
+    bookdown,
+    magrittr,
+    utils
 Suggests: 
     knitr,
+    pkgdown,
     rmarkdown
-VignetteBuilder: knitr
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1

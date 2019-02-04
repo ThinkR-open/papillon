@@ -4,9 +4,11 @@
 #' @param clean Logical. Whether to remove Chapter Rmd files.
 #' @param template A folder with personal template files for a bookdown site
 #'
+#' @importFrom utils file.edit
+#'
 #' @export
 #'
-#' @example
+#' @examples
 #' book_folder <- tempdir()
 #' create_book(path = book_folder, clean = TRUE)
 #'
@@ -68,22 +70,23 @@ open_guide_function <- function(path = "inst/report") {
 
   pkg_name <- read.dcf("DESCRIPTION")[1,"Package"]
   report_path <- strsplit(path, "inst/")[[1]][2]
+  fun_template <- system.file("templates/open_userguide_template.R", package = "visualidentity")
 
-  cat(
-    "#' Open UserGuide of the package
-    #'
-    #' @param ext extension of the book to open: 'html', 'pdf'
-    #'
-    #' @export
-    open_guide <- function(ext = 'html') {
-    if (ext == 'html') {
+  cat(paste(readLines(fun_template), collapse = "\n"),
+      "\n",
+    "open_guide <- function(ext = \"html\") {
+    if (ext == \"html\") {
     guide_path <- system.file('", file.path(report_path, "_book", "index.html"), "', package = '", pkg_name, "')
-    } else if (ext = 'pdf') {
+    } else if (ext == \"pdf\") {
     guide_path <- system.file('", file.path(report_path, "_book", paste0(basename(report_path), ".pdf")), "', package = '", pkg_name, "')
     } else {
     guide_path <- system.file(paste0(\"", file.path(report_path, "_book", paste0(basename(report_path))), ".\", ext[1]), package = '", pkg_name, "')
-  }
+    }
 
   browseURL(paste0('file://', guide_path))
-}", sep = "", file = "R/open_guide.R")
+}
+", sep = "", file = "R/open_guide.R")
+
+  message(paste0("You can add in your package documentation to open guide using: ",
+                pkg_name, "::open_guide()"))
 }

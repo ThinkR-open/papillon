@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 Use `create_book` with `clean = TRUE` to remove example Rmd files. You will use your vignettes to fill the book, you do not need example files. Only the "index.Rmd" file is kept.
 
 ```{r, eval=FALSE}
-create_book(path = "inst/report", clean = TRUE)
+visualidentity::create_book(path = "inst/report", clean = TRUE)
 ```
 
 - Modify the index page with presentation of the book.
@@ -31,7 +31,7 @@ create_book(path = "inst/report", clean = TRUE)
 Function `build_book()` will copy your vignettes in the book directory and build books (html and/or pdf).
 
 ```{r, eval=FALSE}
-build_book(path = "inst/report", path.v = "vignettes",
+visualidentity::build_book(path = "inst/report", path.v = "vignettes",
             output_format = c("bookdown::gitbook", "bookdown::pdf_book"))
 ```
 
@@ -39,7 +39,7 @@ build_book(path = "inst/report", path.v = "vignettes",
 
 Function `open_guide_function()` adds function `open_guide()` inside your package that will open the userguide on demand.
 
-```{r}
-open_guide_function(path = "inst/report")
+```{r, eval=FALSE}
+visualidentity::open_guide_function(path = "inst/report")
 ```
 
