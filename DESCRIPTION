@@ -9,14 +9,19 @@ Authors@R:
 Description: Helps creating company visual identity. Build your
     templates for your package vignettes, reports with {bookdown}, package
     presentation with {pkgdown}. Allow for code folding.
-License: What license is it under?
+License: GPL-3
+URL: https://github.com/Thinkr-open/visualidentity
+BugReports: https://github.com/Thinkr-open/visualidentity/issues
 Imports: 
     bookdown,
+    cli,
+    devtools,
     magrittr,
+    pkgdown,
+    usethis,
     utils
 Suggests: 
     knitr,
-    pkgdown,
     rmarkdown
 VignetteBuilder: 
     knitr

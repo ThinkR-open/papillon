@@ -9,8 +9,10 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' book_folder <- tempdir()
 #' create_book(path = book_folder, clean = TRUE)
+#' }
 #'
 create_book <- function(path = "inst/report", clean = FALSE,
                         template) {
@@ -38,27 +40,51 @@ create_book <- function(path = "inst/report", clean = FALSE,
 #'
 #' @param path Path of the book
 #' @param path.v Path to vignettes folder to copy in the book folder
-#' @param output_format Output format of the book. "bookdown::gitbook", "bookdown::pdf_book"
+#' @param output_format Output format of the book. "bookdown::gitbook", "bookdown::pdf_document2"
+#' @param clean_before Logical. Whether to remove all Rmd (except keep_rmd) before build
+#' @param clean_after Logical. Whether to remove all Rmd (except keep_rmd) after build
+#' @param keep_rmd Regex to list Rmd filenames to keep if clean_before or clean_after is TRUE. You'd better keep index.Rmd.
 #'
+#' @inheritParams bookdown::clean_book
 #' @importFrom bookdown clean_book render_book
 #'
 #' @export
 
 build_book <- function(path = "inst/report", path.v = "vignettes",
-                       output_format = c("bookdown::gitbook", "bookdown::pdf_book")) {
+                       output_format = c("bookdown::gitbook", "bookdown::pdf_document2"),
+                       clean_before = TRUE, clean_after = TRUE,
+                       keep_rmd = "index\\.Rmd$|zzz-references\\.Rmd$",
+                       clean = TRUE) {
 
+  # Clean Rmd files before
+  to_clean_before <- list.files(normalizePath(path), full.names = TRUE, pattern = ".Rmd$")
+  to_clean_before <- to_clean_before[!grepl(keep_rmd, basename(to_clean_before))]
+
+  if (isTRUE(clean_before) && length(to_clean_before) > 0) {
+    file.remove(to_clean_before)
+  }
+
+  # Copy vignettes
   file.copy(list.files(normalizePath(path.v), full.names = TRUE),
             normalizePath(path),
             overwrite = TRUE)
 
+  # Keep Rmd for clean after
+  to_clean_after <- list.files(normalizePath(path), full.names = TRUE, pattern = ".Rmd$")
+  to_clean_after <- to_clean_after[!grepl(keep_rmd, basename(to_clean_after))]
+
+
   oldwd <- setwd(normalizePath(path))
   on.exit(setwd(oldwd), add = TRUE)
-  # bookdown::bookdown_site(input = "index.Rmd")
-  bookdown::clean_book(TRUE)
+
+  # Build books
+  bookdown::clean_book(clean)
   lapply(output_format, function(x) bookdown::render_book("", x))
-  # bookdown::render_book("", "bookdown::gitbook")
-  # bookdown::render_book("", output_format = "bookdown::pdf_book")
-  # setwd(here::here())
+
+  # Clean Rmd after
+  if (isTRUE(clean_after) && length(to_clean_after) > 0) {
+    file.remove(to_clean_after)
+  }
 }
 
 #' Create a function inside R folder in your package to open userguide
@@ -89,4 +115,5 @@ open_guide_function <- function(path = "inst/report") {
 
   message(paste0("You can add in your package documentation to open guide using: ",
                 pkg_name, "::open_guide()"))
+  message("Run 'devtools::document()'")
 }

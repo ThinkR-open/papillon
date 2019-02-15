@@ -1,0 +1,79 @@
+---
+title: "Create a book from vignettes with bookdown"
+author: "Sébastien Rochette"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{01 - Create a book from vignettes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Create book repository inside a package
+
+## Create empty book
+
+Use `create_book` with `clean = TRUE` to remove example Rmd files. You will use your vignettes to fill the book, you do not need example files. Only "index.Rmd" file is kept.
+
+```{r, eval=FALSE}
+visualidentity::create_book(path = "inst/report", clean = TRUE)
+```
+
+- Modify the index page ("index.Rmd") with presentation of the package and/or book.
+
+## Build the book based on vignettes
+
+Function `build_book()` will copy your vignettes in the book directory and build books (html and/or pdf).  
+
+- Vignettes will be incorporated in alpha-numerical order of files names. You may want to name your vignettes starting letters like `aa-vignette-number-one`, `ab-vignette-number-two`. _Note that vignettes names can not start with a number for package build_.
+- Each vignette should start with a level 1 title (`# Title 1`) and be followed by titles with lower levels
+- Book directory can be cleaned before/after running the book. Only "index.Rmd" and "zzz-references.Rmd" files are kept if exist.
+
+```{r, eval=FALSE}
+visualidentity::build_book(path = "inst/report", path.v = "vignettes",
+            output_format = c("bookdown::gitbook", "bookdown::pdf_book"))
+```
+
+## Create index.Rmd with package information from DESCRIPTION
+
+## Create zzz-references.Rmd with list of dependencies
+
+## Create short book with index and references only
+
+You may want to send a PDF along with your package archive to targeted people, so that they know what is inside, who developed it, how to install it and where to find the documentation. A short version of the book above, without vignettes.
+
+To do so, you need to fill the index.Rmd file with necessary information and create the book only with index and references.  
+
+
+## Help user find the userguides
+
+Function `open_guide_function()` adds function `open_guide()` inside your package that will open the userguide on demand.
+
+```{r, eval=FALSE}
+visualidentity::open_guide_function(path = "inst/report")
+```
+
+Users of your package (`pkg`) can now have access to the books using:  
+
+```{r, eval=FALSE}
+pkg::open_guide("html")
+pkg::open_guide("pdf")
+```
+
+Add these in your documentation and/or add a message when loading the package with this function inside your package:
+
+```{r, eval=FALSE}
+#' @title .onAttach
+#' @noRd
+.onAttach <- function(libname, pkgname) {
+  message("Read the report with deeptools::open_guide()")
+}
+```
+

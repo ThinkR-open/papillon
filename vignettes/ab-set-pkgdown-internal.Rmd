@@ -1,0 +1,70 @@
+---
+title: "Create a pkgdown site inside your package"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{02 - Create a pkgdown site}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Create a pkgdown site inside your package
+
+## Create the pkgdown
+
+Use `build_pkgdown` with default option to build the {pkgdown} site and copy it in "inst" so that it is available in your package.
+
+- You can use your own "_pkgdown.yml" with parameter `yml`
+- You can use your own favicon with parameter `favicon`
+
+```{r, eval=FALSE}
+visualidentity::build_pkgdown(
+  move = TRUE, clean = TRUE
+)
+```
+
+
+## Allow code folding
+
+For code folding to be available in the site, each vignette needs to be initiated with a script. However, {pkgdown} does not use YAML of vignettes to build the site.  
+The script below needs to be added as is in the vignette, below the YAML:  
+
+```html
+<script type="text/javascript">
+$(document).ready(function () {
+  window.initializeCodeFolding("show" === "hide");
+});
+</script> 
+```
+
+## Help user find the site
+
+Function `open_pkgdown_function()` adds function `open_pkgdown()` inside your package that will open the userguide on demand.
+
+```{r, eval=FALSE}
+visualidentity::open_pkgdown_function(path = "docs")
+```
+
+Users of your package (`pkg`) can now have access to the site using:  
+
+```{r, eval=FALSE}
+pkg::open_pkgdown()
+```
+
+Add these in your documentation and/or add a message when loading the package with this function inside your package:
+
+```{r, eval=FALSE}
+#' @title .onAttach
+#' @noRd
+.onAttach <- function(libname, pkgname) {
+  message("Open the HTML documentation with deeptools::open_pkgdown()")
+}
+```

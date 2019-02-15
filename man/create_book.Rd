@@ -17,7 +17,9 @@ create_book(path = "inst/report", clean = FALSE, template)
 Create a directory for a book
 }
 \examples{
+\dontrun{
 book_folder <- tempdir()
 create_book(path = book_folder, clean = TRUE)
+}
 
 }
