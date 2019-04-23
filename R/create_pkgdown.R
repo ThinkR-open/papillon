@@ -15,9 +15,9 @@ open_pkgdown_function <- function(path = "docs") {
   cat(paste(readLines(fun_template), collapse = "\n"),
       "\n",
       "open_pkgdown <- function() {
-      guide_path <- system.file('", file.path(path, "index.html"), "', package = '", pkg_name, "')
+      guide_path <- system.file('", file.path(gsub("^inst/", "", path), "index.html"), "', package = '", pkg_name, "')
       if (guide_path == \"\") {
-        stop('There is no pkgdown site in ', '", file.path(path, "index.html"),"')
+        stop('There is no pkgdown site in ', '", file.path(gsub("^inst/", "", path), "index.html"),"')
       }
 
   browseURL(paste0('file://', guide_path))
