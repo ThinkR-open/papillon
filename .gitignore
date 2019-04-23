@@ -1,2 +1,5 @@
 inst/doc
 .Rproj.user
+docs/rsconnect
+inst/docs/rsconnect
+rsconnect

@@ -22,8 +22,27 @@ visualidentity::build_pkgdown(
   move = TRUE, clean_before = TRUE
 )
 
-
 visualidentity::open_pkgdown()
+
+## __ deploy on rsconnect
+usethis::use_git_ignore("docs/rsconnect")
+usethis::use_git_ignore("inst/docs/rsconnect")
+usethis::use_git_ignore("rsconnect")
+
+origwd <- setwd("inst/docs/")
+origwd <- setwd("docs")
+account_name <- rstudioapi::showPrompt("Rsconnect account", "Please enter your username:", "name")
+account_server <- rstudioapi::showPrompt("Rsconnect server", "Please enter your server name:", "1.1.1.1")
+rsconnect::deployApp(
+  ".",                       # the directory containing the content
+  appFiles = list.files(".", recursive = TRUE), # the list of files to include as dependencies (all of them)
+  appPrimaryDoc = "index.html",                 # the primary file
+  appName = "visualidentity",                   # name of the endpoint (unique to your account on Connect)
+  appTitle = "visualidentity",                  # display name for the content
+  account = account_name,                # your Connect username
+  server = account_server                    # the Connect server, see rsconnect::accounts()
+)
+setwd(origwd)
 
 # Utils for dev
 devtools::install(upgrade = "never")

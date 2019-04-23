@@ -108,7 +108,7 @@
       <h1>Create a pkgdown site inside your package</h1>
                         <h4 class="author">Vignette Author</h4>
             
-            <h4 class="date">2019-02-15</h4>
+            <h4 class="date">2019-04-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/Thinkr-open/visualidentity/blob/master/vignettes/ab-set-pkgdown-internal.Rmd"><code>vignettes/ab-set-pkgdown-internal.Rmd</code></a></small>
       <div class="hidden name"><code>ab-set-pkgdown-internal.Rmd</code></div>
@@ -125,39 +125,39 @@
 <a href="#create-the-pkgdown" class="anchor"></a>Create the pkgdown</h2>
 <p>Use <code>build_pkgdown</code> with default option to build the {pkgdown} site and copy it in “inst” so that it is available in your package.</p>
 <ul>
-<li>You can use your own “_pkgdown.yml" with parameter <code>yml</code>
+<li>You can use your own "_pkgdown.yml" with parameter <code>yml</code>
 </li>
 <li>You can use your own favicon with parameter <code>favicon</code>
 </li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">visualidentity<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/visualidentity/topics/build_pkgdown">build_pkgdown</a></span>(
-  <span class="dt">move =</span> <span class="ot">TRUE</span>, <span class="dt">clean =</span> <span class="ot">TRUE</span>
-)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">visualidentity<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/visualidentity/topics/build_pkgdown">build_pkgdown</a></span>(</a>
+<a class="sourceLine" id="cb1-2" title="2">  <span class="dt">move =</span> <span class="ot">TRUE</span>, <span class="dt">clean =</span> <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb1-3" title="3">)</a></code></pre></div>
 </div>
 <div id="allow-code-folding" class="section level2">
 <h2 class="hasAnchor">
 <a href="#allow-code-folding" class="anchor"></a>Allow code folding</h2>
 <p>For code folding to be available in the site, each vignette needs to be initiated with a script. However, {pkgdown} does not use YAML of vignettes to build the site.<br>
 The script below needs to be added as is in the vignette, below the YAML:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">"text/javascript"</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Comparison">&gt;</a></span>
-<span class="at">$</span>(document).<span class="at">ready</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/function">function</a></span> () <span class="op">{</span>
-  <span class="va">window</span>.<span class="at">initializeCodeFolding</span>(<span class="st">"show"</span> <span class="op">===</span> <span class="st">"hide"</span>)<span class="op">;</span>
-<span class="op">}</span>)<span class="op">;</span>
-<span class="kw">&lt;/script&gt;</span> </code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">"text/javascript"</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Comparison">&gt;</a></span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="at">$</span>(document).<span class="at">ready</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/function">function</a></span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-3" title="3">  <span class="va">window</span>.<span class="at">initializeCodeFolding</span>(<span class="st">"show"</span> <span class="op">===</span> <span class="st">"hide"</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="kw">&lt;/script&gt;</span> </a></code></pre></div>
 </div>
 <div id="help-user-find-the-site" class="section level2">
 <h2 class="hasAnchor">
 <a href="#help-user-find-the-site" class="anchor"></a>Help user find the site</h2>
 <p>Function <code><a href="../reference/open_pkgdown_function.html">open_pkgdown_function()</a></code> adds function <code><a href="../reference/open_pkgdown.html">open_pkgdown()</a></code> inside your package that will open the userguide on demand.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">visualidentity<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/visualidentity/topics/open_pkgdown_function">open_pkgdown_function</a></span>(<span class="dt">path =</span> <span class="st">"docs"</span>)</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">visualidentity<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/visualidentity/topics/open_pkgdown_function">open_pkgdown_function</a></span>(<span class="dt">path =</span> <span class="st">"docs"</span>)</a></code></pre></div>
 <p>Users of your package (<code>pkg</code>) can now have access to the site using:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pkg<span class="op">::</span><span class="kw">open_pkgdown</span>()</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">pkg<span class="op">::</span><span class="kw">open_pkgdown</span>()</a></code></pre></div>
 <p>Add these in your documentation and/or add a message when loading the package with this function inside your package:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#' @title .onAttach</span>
-<span class="co">#' @noRd</span>
-.onAttach &lt;-<span class="st"> </span><span class="cf">function</span>(libname, pkgname) {
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">message</a></span>(<span class="st">"Open the HTML documentation with deeptools::open_pkgdown()"</span>)
-}</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co">#' @title .onAttach</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="co">#' @noRd</span></a>
+<a class="sourceLine" id="cb5-3" title="3">.onAttach &lt;-<span class="st"> </span><span class="cf">function</span>(libname, pkgname) {</a>
+<a class="sourceLine" id="cb5-4" title="4">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">message</a></span>(<span class="st">"Open the HTML documentation with deeptools::open_pkgdown()"</span>)</a>
+<a class="sourceLine" id="cb5-5" title="5">}</a></code></pre></div>
 </div>
 </div>
   </div>

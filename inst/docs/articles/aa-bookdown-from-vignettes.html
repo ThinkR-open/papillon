@@ -108,7 +108,7 @@
       <h1>Create a book from vignettes with bookdown</h1>
                         <h4 class="author">Sébastien Rochette</h4>
             
-            <h4 class="date">2019-02-15</h4>
+            <h4 class="date">2019-04-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/Thinkr-open/visualidentity/blob/master/vignettes/aa-bookdown-from-vignettes.Rmd"><code>vignettes/aa-bookdown-from-vignettes.Rmd</code></a></small>
       <div class="hidden name"><code>aa-bookdown-from-vignettes.Rmd</code></div>
@@ -124,7 +124,7 @@
 <h2 class="hasAnchor">
 <a href="#create-empty-book" class="anchor"></a>Create empty book</h2>
 <p>Use <code>create_book</code> with <code>clean = TRUE</code> to remove example Rmd files. You will use your vignettes to fill the book, you do not need example files. Only “index.Rmd” file is kept.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">visualidentity<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/visualidentity/topics/create_book">create_book</a></span>(<span class="dt">path =</span> <span class="st">"inst/report"</span>, <span class="dt">clean =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">visualidentity<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/visualidentity/topics/create_book">create_book</a></span>(<span class="dt">path =</span> <span class="st">"inst/report"</span>, <span class="dt">clean =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <ul>
 <li>Modify the index page (“index.Rmd”) with presentation of the package and/or book.</li>
 </ul>
@@ -138,8 +138,8 @@
 <li>Each vignette should start with a level 1 title (<code># Title 1</code>) and be followed by titles with lower levels</li>
 <li>Book directory can be cleaned before/after running the book. Only “index.Rmd” and “zzz-references.Rmd” files are kept if exist.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">visualidentity<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/visualidentity/topics/build_book">build_book</a></span>(<span class="dt">path =</span> <span class="st">"inst/report"</span>, <span class="dt">path.v =</span> <span class="st">"vignettes"</span>,
-            <span class="dt">output_format =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"bookdown::gitbook"</span>, <span class="st">"bookdown::pdf_book"</span>))</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">visualidentity<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/visualidentity/topics/build_book">build_book</a></span>(<span class="dt">path =</span> <span class="st">"inst/report"</span>, <span class="dt">path.v =</span> <span class="st">"vignettes"</span>,</a>
+<a class="sourceLine" id="cb2-2" title="2">            <span class="dt">output_format =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"bookdown::gitbook"</span>, <span class="st">"bookdown::pdf_book"</span>))</a></code></pre></div>
 </div>
 <div id="create-index-rmd-with-package-information-from-description" class="section level2">
 <h2 class="hasAnchor">
@@ -159,16 +159,16 @@
 <h2 class="hasAnchor">
 <a href="#help-user-find-the-userguides" class="anchor"></a>Help user find the userguides</h2>
 <p>Function <code><a href="../reference/open_guide_function.html">open_guide_function()</a></code> adds function <code><a href="../reference/open_guide.html">open_guide()</a></code> inside your package that will open the userguide on demand.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">visualidentity<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/visualidentity/topics/open_guide_function">open_guide_function</a></span>(<span class="dt">path =</span> <span class="st">"inst/report"</span>)</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">visualidentity<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/visualidentity/topics/open_guide_function">open_guide_function</a></span>(<span class="dt">path =</span> <span class="st">"inst/report"</span>)</a></code></pre></div>
 <p>Users of your package (<code>pkg</code>) can now have access to the books using:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pkg<span class="op">::</span><span class="kw">open_guide</span>(<span class="st">"html"</span>)
-pkg<span class="op">::</span><span class="kw">open_guide</span>(<span class="st">"pdf"</span>)</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">pkg<span class="op">::</span><span class="kw">open_guide</span>(<span class="st">"html"</span>)</a>
+<a class="sourceLine" id="cb4-2" title="2">pkg<span class="op">::</span><span class="kw">open_guide</span>(<span class="st">"pdf"</span>)</a></code></pre></div>
 <p>Add these in your documentation and/or add a message when loading the package with this function inside your package:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#' @title .onAttach</span>
-<span class="co">#' @noRd</span>
-.onAttach &lt;-<span class="st"> </span><span class="cf">function</span>(libname, pkgname) {
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">message</a></span>(<span class="st">"Read the report with deeptools::open_guide()"</span>)
-}</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co">#' @title .onAttach</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="co">#' @noRd</span></a>
+<a class="sourceLine" id="cb5-3" title="3">.onAttach &lt;-<span class="st"> </span><span class="cf">function</span>(libname, pkgname) {</a>
+<a class="sourceLine" id="cb5-4" title="4">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">message</a></span>(<span class="st">"Read the report with deeptools::open_guide()"</span>)</a>
+<a class="sourceLine" id="cb5-5" title="5">}</a></code></pre></div>
 </div>
 </div>
   </div>
