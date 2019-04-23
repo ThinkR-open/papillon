@@ -59,6 +59,7 @@ build_pkgdown <- function(move = TRUE, clean_before = TRUE, clean_after = TRUE,
     unlink("inst/docs", recursive = TRUE)
   }
 
+  use_build_ignore("docs")
   pkgdown::build_site(..., preview = FALSE)
 
   if (!missing(favicon)) {

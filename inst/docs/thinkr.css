@@ -30,3 +30,7 @@ h2 {
     color: #15b7d6;
 }
 
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    background-color: #DE633C;
+    border-radius: 3px;
+}

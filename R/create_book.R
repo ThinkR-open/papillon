@@ -4,7 +4,7 @@
 #' @param clean Logical. Whether to remove Chapter Rmd files.
 #' @param template A folder with personal template files for a bookdown site
 #'
-#' @importFrom utils file.edit
+#' @importFrom usethis edit_file
 #'
 #' @export
 #'
@@ -33,7 +33,7 @@ create_book <- function(path = "inst/report", clean = FALSE,
     suppressMessages(file.remove(list.files(pattern = "^0[[:digit:]]-.*\\.Rmd$")))
   }
   message("Book created in ", path)
-  file.edit("index.Rmd")
+  edit_file("index.Rmd")
 }
 
 #' Build book from vignettes
