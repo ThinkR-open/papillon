@@ -5,3 +5,5 @@
 ^visualidentity\.Rproj$
 ^\.Rproj\.user$
 ^docs$
+^doc$
+^Meta$

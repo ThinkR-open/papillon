@@ -13,16 +13,22 @@ License: GPL-3
 URL: https://github.com/Thinkr-open/visualidentity
 BugReports: https://github.com/Thinkr-open/visualidentity/issues
 Imports: 
+    attachment,
     bookdown,
     cli,
+    crayon,
+    desc,
     devtools,
     magrittr,
     pkgdown,
+    readr,
+    remotes,
+    rmarkdown,
     usethis,
     utils
 Suggests: 
     knitr,
-    rmarkdown
+    shiny
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

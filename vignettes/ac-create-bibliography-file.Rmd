@@ -1,0 +1,48 @@
+---
+title: "Create Bibliography File"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ac-create-bibliography-file}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(visualidentity)
+```
+
+## Build a reference page
+
+To award people hard working for open-source, it is always good to cite their work. In order to add an informative page in your Shiny applications for instance, you can create a html or markdown page listing all package dependencies used. 
+
+```{r, eval=FALSE}
+visualidentity::create_pkg_biblio_file(to = "html", out.dir = "inst")
+# Can be included in a shiny app using 
+shiny::includeHTML("bibliography.html")
+# OR
+visualidentity::create_pkg_biblio_file(to = "markdown")
+# Can be included in a shiny app using 
+shiny::includeMarkdown("bibliography.md")
+```
+
+## Add references to this page
+
+```{r}
+desc_file <- system.file("DESCRIPTION", package = "visualidentity")
+out.dir <- tempdir()
+visualidentity::create_pkg_biblio_file(
+  path = desc_file, to = "html",
+  out.dir = out.dir, edit = FALSE)
+```
+
+```{r, results="asis"}
+shiny::includeHTML(file.path(out.dir, "bibliography.html"))
+```
+

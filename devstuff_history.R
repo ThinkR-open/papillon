@@ -5,6 +5,8 @@ usethis::use_gpl3_license("ThinkR")
 usethis::use_readme_rmd()
 usethis::use_vignette("aa-bookdown-from-vignettes")
 usethis::use_vignette("ab-set-pkgdown-internal")
+usethis::use_vignette("ac-create-bibliography-file")
+usethis::use_vignette("ad-create-description-file")
 
 # Packages ----
 usethis::use_pipe()
@@ -30,7 +32,7 @@ usethis::use_git_ignore("inst/docs/rsconnect")
 usethis::use_git_ignore("rsconnect")
 
 origwd <- setwd("inst/docs/")
-origwd <- setwd("docs")
+# origwd <- setwd("docs")
 account_name <- rstudioapi::showPrompt("Rsconnect account", "Please enter your username:", "name")
 account_server <- rstudioapi::showPrompt("Rsconnect server", "Please enter your server name:", "1.1.1.1")
 rsconnect::deployApp(
@@ -43,6 +45,9 @@ rsconnect::deployApp(
   server = account_server                    # the Connect server, see rsconnect::accounts()
 )
 setwd(origwd)
+
+# Bibliography file
+visualidentity::create_pkg_biblio_file(to = "html", out.dir = "inst", edit = FALSE)
 
 # Utils for dev
 devtools::install(upgrade = "never")

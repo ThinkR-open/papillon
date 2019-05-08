@@ -4,4 +4,6 @@ pkgdown_sha: ~
 articles:
   aa-bookdown-from-vignettes: aa-bookdown-from-vignettes.html
   ab-set-pkgdown-internal: ab-set-pkgdown-internal.html
+  ac-create-bibliography-file: ac-create-bibliography-file.html
+  ad-create-description-file: ad-create-description-file.html
 

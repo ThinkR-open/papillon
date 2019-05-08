@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Build book from vignettes — build_book • visualidentity</title>
+<title>Render Rmd in a script external to the current session — render_external • visualidentity</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -29,9 +29,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script>
 
-<meta property="og:title" content="Build book from vignettes — build_book" />
+<meta property="og:title" content="Render Rmd in a script external to the current session — render_external" />
 
-<meta property="og:description" content="Build book from vignettes" />
+<meta property="og:description" content="Render Rmd in a script external to the current session" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -142,57 +142,58 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Build book from vignettes</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Thinkr-open/visualidentity/blob/master/R/create_book.R'><code>R/create_book.R</code></a></small>
-    <div class="hidden name"><code>build_book.Rd</code></div>
+    <h1>Render Rmd in a script external to the current session</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Thinkr-open/visualidentity/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
+    <div class="hidden name"><code>render_external.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Build book from vignettes</p>
+    <p>Render Rmd in a script external to the current session</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>build_book</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"inst/report"</span>, <span class='kw'>path.v</span> <span class='kw'>=</span> <span class='st'>"vignettes"</span>,
-  <span class='kw'>output_format</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"bookdown::gitbook"</span>, <span class='st'>"bookdown::pdf_document2"</span>),
-  <span class='kw'>clean_before</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>clean_after</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>keep_rmd</span> <span class='kw'>=</span> <span class='st'>"index\\.Rmd$|zzz-references\\.Rmd$"</span>, <span class='kw'>clean</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>render_external</span>(<span class='no'>input</span>, <span class='kw'>output_format</span> <span class='kw'>=</span> <span class='st'>"rmarkdown::html_document"</span>,
+  <span class='no'>output_file</span>, <span class='no'>output_options</span>, <span class='kw'>warn</span> <span class='kw'>=</span> -<span class='fl'>1</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>path</th>
-      <td><p>Path of the book</p></td>
-    </tr>
-    <tr>
-      <th>path.v</th>
-      <td><p>Path to vignettes folder to copy in the book folder</p></td>
+      <th>input</th>
+      <td><p>The input file to be rendered. This can be an R script (.R),
+an R Markdown document (.Rmd), or a plain markdown document.</p></td>
     </tr>
     <tr>
       <th>output_format</th>
-      <td><p>Output format of the book. "bookdown::gitbook", "bookdown::pdf_document2"</p></td>
+      <td><p>The R Markdown output format to convert to. The option
+<code>"all"</code> will render all formats defined within the file. The option can
+be the name of a format (e.g. <code>"html_document"</code>) and that will render
+the document to that single format. One can also use a vector of format
+names to render to multiple formats. Alternatively, you can pass an output
+format object (e.g. <code>html_document()</code>). If using <code>NULL</code> then the
+output format is the first one defined in the YAML frontmatter in the input
+file (this defaults to HTML if no format is specified there).</p></td>
     </tr>
     <tr>
-      <th>clean_before</th>
-      <td><p>Logical. Whether to remove all Rmd (except keep_rmd) before build</p></td>
+      <th>output_file</th>
+      <td><p>The name of the output file. If using <code>NULL</code> then the
+output filename will be based on filename for the input file. If a filename
+is provided, a path to the output file can also be provided. Note that the
+<code>output_dir</code> option allows for specifying the output file path as well,
+however, if also specifying the path, the directory must exist.</p></td>
     </tr>
     <tr>
-      <th>clean_after</th>
-      <td><p>Logical. Whether to remove all Rmd (except keep_rmd) after build</p></td>
+      <th>output_options</th>
+      <td><p>List of output options that can override the options
+specified in metadata (e.g. could be used to force <code>self_contained</code> or
+<code>mathjax = "local"</code>). Note that this is only valid when the output
+format is read from metadata (i.e. not a custom format object passed to
+<code>output_format</code>).</p></td>
     </tr>
     <tr>
-      <th>keep_rmd</th>
-      <td><p>Regex to list Rmd filenames to keep if clean_before or clean_after is TRUE. You'd better keep index.Rmd.</p></td>
-    </tr>
-    <tr>
-      <th>clean</th>
-      <td><p>Whether to delete the possible output files. If <code>FALSE</code>,
-simply print out a list of files/directories that should probably be
-deleted. You can set the global option <code>bookdown.clean_book = TRUE</code> to
-force this function to delete files. You are recommended to take a look at
-the list of files at least once before actually deleting them, i.e. run
-<code>clean_book(FALSE)</code> before <code>clean_book(TRUE)</code>.</p></td>
+      <th>warn</th>
+      <td><p>sets the handling of warning messages. -1 or 0</p></td>
     </tr>
     </table>
     

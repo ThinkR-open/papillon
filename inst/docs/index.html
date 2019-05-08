@@ -77,6 +77,12 @@
     <li>
       <a href="articles/ab-set-pkgdown-internal.html">Create a pkgdown site inside your package</a>
     </li>
+    <li>
+      <a href="articles/ac-create-bibliography-file.html">Create Bibliography File</a>
+    </li>
+    <li>
+      <a href="articles/ad-create-description-file.html">ad-create-description-file</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -151,6 +157,28 @@ To use your own template, it is better to create a R package with all necessary 
 <p>Help users find your pkgdown website with function <code><a href="reference/open_pkgdown_function.html">open_pkgdown_function()</a></code>. This adds function <code><a href="reference/open_pkgdown.html">open_pkgdown()</a></code> inside your package that will open the site on demand.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">visualidentity<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/visualidentity/topics/open_pkgdown_function">open_pkgdown_function</a></span>()</a></code></pre></div>
 </div>
+<div id="build-a-reference-page" class="section level3">
+<h3 class="hasAnchor">
+<a href="#build-a-reference-page" class="anchor"></a>Build a reference page</h3>
+<p>To award people hard working for open-source, it is always good to cite their work. In order to add an informative page in your Shiny applications for instance, you can create a html or markdown page listing all package dependencies used.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">visualidentity<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/visualidentity/topics/create_pkg_biblio_file">create_pkg_biblio_file</a></span>(<span class="dt">to =</span> <span class="st">"html"</span>, <span class="dt">out.dir =</span> <span class="st">"inst"</span>)</a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="co"># Can be included in a shiny app using </span></a>
+<a class="sourceLine" id="cb7-3" title="3">shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/include">includeHTML</a></span>(<span class="st">"bibliography.html"</span>)</a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="co"># OR</span></a>
+<a class="sourceLine" id="cb7-5" title="5">visualidentity<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/visualidentity/topics/create_pkg_biblio_file">create_pkg_biblio_file</a></span>(<span class="dt">to =</span> <span class="st">"markdown"</span>)</a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="co"># Can be included in a shiny app using </span></a>
+<a class="sourceLine" id="cb7-7" title="7">shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/include">includeMarkdown</a></span>(<span class="st">"bibliography.md"</span>)</a></code></pre></div>
+</div>
+</div>
+<div id="to-describe-your-package-and-how-to-install-it" class="section level2">
+<h2 class="hasAnchor">
+<a href="#to-describe-your-package-and-how-to-install-it" class="anchor"></a>To describe your package and how to install it</h2>
+<p>This can be useful to create your Readme for instance or to send the instructions file for your clients to install your package.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">path &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"DESCRIPTION"</span>, <span class="dt">package =</span> <span class="st">"visualidentity"</span>)</a>
+<a class="sourceLine" id="cb8-2" title="2">out.dir &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/tempfile">tempdir</a></span>()</a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="kw"><a href="reference/create_pkg_desc_file.html">create_pkg_desc_file</a></span>(path, <span class="dt">source =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"archive"</span>), <span class="dt">to =</span> <span class="st">"html"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co"># Use with results="asis" in a Rmd</span></a>
+<a class="sourceLine" id="cb9-2" title="2">shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/include">includeHTML</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(out.dir, <span class="st">"pkg_description.html"</span>))</a></code></pre></div>
 </div>
 </div>
   </div>

@@ -68,4 +68,31 @@ Help users find your pkgdown website with function `open_pkgdown_function()`. Th
 visualidentity::open_pkgdown_function()
 ```
 
+### Build a reference page
 
+To award people hard working for open-source, it is always good to cite their work. In order to add an informative page in your Shiny applications for instance, you can create a html or markdown page listing all package dependencies used. 
+
+```{r, eval=FALSE}
+visualidentity::create_pkg_biblio_file(to = "html", out.dir = "inst")
+# Can be included in a shiny app using 
+shiny::includeHTML("bibliography.html")
+# OR
+visualidentity::create_pkg_biblio_file(to = "markdown")
+# Can be included in a shiny app using 
+shiny::includeMarkdown("bibliography.md")
+```
+
+## To describe your package and how to install it
+
+This can be useful to create your Readme for instance or to send the instructions file for your clients to install your package.
+
+```{r, eval=FALSE}
+path <- system.file("DESCRIPTION", package = "visualidentity")
+out.dir <- tempdir()
+create_pkg_desc_file(path, source = c("archive"), to = "html")
+```
+
+```{r, eval=FALSE}
+# Use with results="asis" in a Rmd
+shiny::includeHTML(file.path(out.dir, "pkg_description.html"))
+```

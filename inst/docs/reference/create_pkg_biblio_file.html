@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Build book from vignettes — build_book • visualidentity</title>
+<title>Create bibliography md file from a package DESCRIPTION file — create_pkg_biblio_file • visualidentity</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -29,9 +29,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script>
 
-<meta property="og:title" content="Build book from vignettes — build_book" />
+<meta property="og:title" content="Create bibliography md file from a package DESCRIPTION file — create_pkg_biblio_file" />
 
-<meta property="og:description" content="Build book from vignettes" />
+<meta property="og:description" content="Create bibliography md file from a package DESCRIPTION file" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -142,57 +142,48 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Build book from vignettes</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Thinkr-open/visualidentity/blob/master/R/create_book.R'><code>R/create_book.R</code></a></small>
-    <div class="hidden name"><code>build_book.Rd</code></div>
+    <h1>Create bibliography md file from a package DESCRIPTION file</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Thinkr-open/visualidentity/blob/master/R/bibliography.R'><code>R/bibliography.R</code></a></small>
+    <div class="hidden name"><code>create_pkg_biblio_file.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Build book from vignettes</p>
+    <p>Create bibliography md file from a package DESCRIPTION file</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>build_book</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"inst/report"</span>, <span class='kw'>path.v</span> <span class='kw'>=</span> <span class='st'>"vignettes"</span>,
-  <span class='kw'>output_format</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"bookdown::gitbook"</span>, <span class='st'>"bookdown::pdf_document2"</span>),
-  <span class='kw'>clean_before</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>clean_after</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>keep_rmd</span> <span class='kw'>=</span> <span class='st'>"index\\.Rmd$|zzz-references\\.Rmd$"</span>, <span class='kw'>clean</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>create_pkg_biblio_file</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"DESCRIPTION"</span>, <span class='no'>out.dir</span>,
+  <span class='kw'>output</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"packages"</span>, <span class='st'>"references"</span>), <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"html"</span>, <span class='st'>"markdown"</span>),
+  <span class='no'>custom.md</span>, <span class='kw'>edit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>path</th>
-      <td><p>Path of the book</p></td>
+      <td><p>Path to DESCRIPTION file</p></td>
     </tr>
     <tr>
-      <th>path.v</th>
-      <td><p>Path to vignettes folder to copy in the book folder</p></td>
+      <th>out.dir</th>
+      <td><p>Directory where to save output md file</p></td>
     </tr>
     <tr>
-      <th>output_format</th>
-      <td><p>Output format of the book. "bookdown::gitbook", "bookdown::pdf_document2"</p></td>
+      <th>output</th>
+      <td><p>Vector with "packages" (list of packages as bullet points),
+"references" (list of citation references) or both "packages" and "references"</p></td>
     </tr>
     <tr>
-      <th>clean_before</th>
-      <td><p>Logical. Whether to remove all Rmd (except keep_rmd) before build</p></td>
+      <th>to</th>
+      <td><p>Format to convert to. "html" or "markdown"</p></td>
     </tr>
     <tr>
-      <th>clean_after</th>
-      <td><p>Logical. Whether to remove all Rmd (except keep_rmd) after build</p></td>
+      <th>custom.md</th>
+      <td><p>Vector of markdown text to add to the document before rendering</p></td>
     </tr>
     <tr>
-      <th>keep_rmd</th>
-      <td><p>Regex to list Rmd filenames to keep if clean_before or clean_after is TRUE. You'd better keep index.Rmd.</p></td>
-    </tr>
-    <tr>
-      <th>clean</th>
-      <td><p>Whether to delete the possible output files. If <code>FALSE</code>,
-simply print out a list of files/directories that should probably be
-deleted. You can set the global option <code>bookdown.clean_book = TRUE</code> to
-force this function to delete files. You are recommended to take a look at
-the list of files at least once before actually deleting them, i.e. run
-<code>clean_book(FALSE)</code> before <code>clean_book(TRUE)</code>.</p></td>
+      <th>edit</th>
+      <td><p>Logical. Whether to open output md file for manual edition</p></td>
     </tr>
     </table>
     
