@@ -9,7 +9,7 @@
 #' @importFrom utils tail
 #'
 #' @export
-create_pkg_desc_file <- function(path, source = c("archive", "github", "git"), url,
+create_pkg_desc_file <- function(path = "DESCRIPTION", source = c("archive", "github", "git"), url,
                                  out.dir,
                                  to = c("html", "markdown"),
                                  edit = TRUE) {
