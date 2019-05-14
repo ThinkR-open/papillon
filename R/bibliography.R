@@ -75,6 +75,9 @@ create_biblio_file <- function(packages, out.dir,
     bib_lines[grep("link-citations", bib_lines)] <- "link-citations: no"
   }
 
+  # escape \
+  # bib_lines <- gsub("\\", "\\\\", bib_lines, fixed = TRUE)
+
   # write modified Rmd
   readr::write_lines(enc2utf8(bib_lines), paste0(file_temp, ".Rmd"))
 
@@ -101,7 +104,6 @@ create_biblio_file <- function(packages, out.dir,
   ref_end <- end_divs[which(end_divs > ref_start)[length(allref_start)]]
   # ref_end <- grep("<!--end references -->", html_lines)
 
-
   # Build page
   out_lines <- html_lines[custom_start:custom_end]
   if ("packages" %in% output) {
@@ -112,6 +114,7 @@ create_biblio_file <- function(packages, out.dir,
   }
 
   out_from_lines(out_lines = out_lines, to = to,
-                 out.dir = out.dir, filename = "bibliography")
+                 out.dir = out.dir, filename = "bibliography",
+                 edit = edit)
 }
 

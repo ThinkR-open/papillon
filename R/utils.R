@@ -40,7 +40,9 @@ render_external <- function(input, output_format = "rmarkdown::html_document",
 #' @param to Format to convert to. "html" or "markdown"
 #' @param out.dir Directory where to save output md file
 #' @param filename filename without extentions
-out_from_lines<- function(out_lines, to = c("html", "markdown"), out.dir, filename = "file") {
+#' @param edit Logical. Whether to open file for edition
+out_from_lines <- function(out_lines, to = c("html", "markdown"), out.dir, filename = "file",
+                           edit = TRUE) {
   to <- match.arg(to, c("html", "markdown"), several.ok = FALSE)
 
   if (missing(out.dir)) {out.dir <- tempdir()}

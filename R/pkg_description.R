@@ -6,11 +6,13 @@
 #' @param url url of the repository if not in URL in DESCRIPTION. Used when source is github or git.
 #' @inheritParams out_from_lines
 #' @importFrom desc description
+#' @importFrom utils tail
 #'
 #' @export
 create_pkg_desc_file <- function(path, source = c("archive", "github", "git"), url,
                                  out.dir,
-                                 to = c("html", "markdown")) {
+                                 to = c("html", "markdown"),
+                                 edit = TRUE) {
 
   source <- match.arg(source, c("archive", "github", "git"), several.ok = FALSE)
   to <- match.arg(to, c("html", "markdown"), several.ok = FALSE)
@@ -99,5 +101,6 @@ create_pkg_desc_file <- function(path, source = c("archive", "github", "git"), u
   readr::write_lines(enc2utf8(out_lines), html_out)
 
   out_from_lines(out_lines = out_lines, to = to,
-                 out.dir = out.dir, filename = "pkg_description")
+                 out.dir = out.dir, filename = "pkg_description",
+                 edit = edit)
 }

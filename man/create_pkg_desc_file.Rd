@@ -5,7 +5,7 @@
 \title{Create package description file}
 \usage{
 create_pkg_desc_file(path, source = c("archive", "github", "git"), url,
-  out.dir, to = c("html", "markdown"))
+  out.dir, to = c("html", "markdown"), edit = TRUE)
 }
 \arguments{
 \item{path}{Path to description file}
@@ -17,6 +17,8 @@ create_pkg_desc_file(path, source = c("archive", "github", "git"), url,
 \item{out.dir}{Path to save output file}
 
 \item{to}{Format to convert to. "html" or "markdown"}
+
+\item{edit}{Logical. Whether to open file for edition}
 }
 \description{
 Create package description file

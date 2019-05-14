@@ -5,7 +5,7 @@
 \title{write output in utf8}
 \usage{
 out_from_lines(out_lines, to = c("html", "markdown"), out.dir,
-  filename = "file")
+  filename = "file", edit = TRUE)
 }
 \arguments{
 \item{out_lines}{vector of html lines to write}
@@ -15,6 +15,8 @@ out_from_lines(out_lines, to = c("html", "markdown"), out.dir,
 \item{out.dir}{Directory where to save output md file}
 
 \item{filename}{filename without extentions}
+
+\item{edit}{Logical. Whether to open file for edition}
 }
 \description{
 write output in utf8
