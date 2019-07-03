@@ -50,6 +50,8 @@ rsconnect::deployApp(
 )
 setwd(origwd)
 
+# _deploy pkgdown on Travis
+
 # Bibliography file
 chameleon::create_pkg_biblio_file(to = "html", out.dir = "inst", edit = FALSE)
 
