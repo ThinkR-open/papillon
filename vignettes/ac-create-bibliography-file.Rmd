@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(visualidentity)
+library(chameleon)
 ```
 
 ## Build a reference page
@@ -23,11 +23,11 @@ library(visualidentity)
 To award people hard working for open-source, it is always good to cite their work. In order to add an informative page in your Shiny applications for instance, you can create a html or markdown page listing all package dependencies used. 
 
 ```{r, eval=FALSE}
-visualidentity::create_pkg_biblio_file(to = "html", out.dir = "inst")
+chameleon::create_pkg_biblio_file(to = "html", out.dir = "inst")
 # Can be included in a shiny app using 
 shiny::includeHTML("bibliography.html")
 # OR
-visualidentity::create_pkg_biblio_file(to = "markdown")
+chameleon::create_pkg_biblio_file(to = "markdown")
 # Can be included in a shiny app using 
 shiny::includeMarkdown("bibliography.md")
 ```
@@ -35,9 +35,9 @@ shiny::includeMarkdown("bibliography.md")
 ## Add references to this page
 
 ```{r}
-desc_file <- system.file("DESCRIPTION", package = "visualidentity")
+desc_file <- system.file("DESCRIPTION", package = "chameleon")
 out.dir <- tempdir()
-visualidentity::create_pkg_biblio_file(
+chameleon::create_pkg_biblio_file(
   path = desc_file, to = "html",
   out.dir = out.dir, edit = FALSE)
 ```

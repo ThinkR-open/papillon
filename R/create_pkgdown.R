@@ -6,7 +6,7 @@
 open_pkgdown_function <- function(path = "docs") {
 
   pkg_name <- read.dcf("DESCRIPTION")[1,"Package"]
-  fun_template <- system.file("templates/open_pkgdown_template.R", package = "visualidentity")
+  fun_template <- system.file("templates/open_pkgdown_template.R", package = "chameleon")
 
   if (!dir.exists(path)) {
    stop("There is no directory: ", path)

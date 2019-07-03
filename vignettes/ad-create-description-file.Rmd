@@ -15,7 +15,7 @@ comment = "#>"
 ```
 
 ```{r setup}
-library(visualidentity)
+library(chameleon)
 ```
 
 ## To describe your package and how to install it
@@ -23,7 +23,7 @@ library(visualidentity)
 This can be useful to create your Readme for instance or to send the instructions file for your clients to install your package.
 
 ```{r}
-path <- system.file("DESCRIPTION", package = "visualidentity")
+path <- system.file("DESCRIPTION", package = "chameleon")
 out.dir <- tempdir()
 create_pkg_desc_file(path, source = c("archive"), to = "html")
 ```

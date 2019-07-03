@@ -2,7 +2,7 @@
 ^LICENSE\.md$
 ^README\.Rmd$
 ^devstuff_history\.R$
-^visualidentity\.Rproj$
+^chameleon\.Rproj$
 ^\.Rproj\.user$
 ^docs$
 ^doc$

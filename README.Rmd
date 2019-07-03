@@ -12,15 +12,15 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-# visualidentity
+# chameleon
 
-The goal of visualidentity is to build package documentation using personnalized templates.
+The goal of {chameleon} is to build and highlight package documentation with customized templates.
 
 ## Installation
 
 ```{r, eval=FALSE}
 # install.packages("remotes")
-remotes::install_github("ThinkR-open/visualidentity")
+remotes::install_github("ThinkR-open/chameleon")
 ```
 
 
@@ -54,7 +54,7 @@ template:
 ```
 
 ```{r, eval=FALSE}
-visualidentity::build_pkgdown(
+chameleon::build_pkgdown(
   lazy = TRUE,
   yml = "/pah/to/your/yaml/_pkgdown.yml",
   favicon = "/path/to/your/favicon.ico",
@@ -62,10 +62,10 @@ visualidentity::build_pkgdown(
 )
 ```
 
-Help users find your pkgdown website with function `open_pkgdown_function()`. This adds function `open_pkgdown()` inside your package that will open the site on demand.
+Help users find your pkgdown website with function `open_pkgdown_function()`. This adds function `open_pkgdown()` inside your package that will open the site on demand. _This may make your package not pass warnings in checks, but remember this is for internal or private use. For public use, you can publish your pkgdown site._
 
 ```{r, eval=FALSE}
-visualidentity::open_pkgdown_function()
+chameleon::open_pkgdown_function()
 ```
 
 ### Build a reference page
@@ -73,11 +73,11 @@ visualidentity::open_pkgdown_function()
 To award people hard working for open-source, it is always good to cite their work. In order to add an informative page in your Shiny applications for instance, you can create a html or markdown page listing all package dependencies used. 
 
 ```{r, eval=FALSE}
-visualidentity::create_pkg_biblio_file(to = "html", out.dir = "inst")
+chameleon::create_pkg_biblio_file(to = "html", out.dir = "inst")
 # Can be included in a shiny app using 
 shiny::includeHTML("bibliography.html")
 # OR
-visualidentity::create_pkg_biblio_file(to = "markdown")
+chameleon::create_pkg_biblio_file(to = "markdown")
 # Can be included in a shiny app using 
 shiny::includeMarkdown("bibliography.md")
 ```
@@ -87,7 +87,7 @@ shiny::includeMarkdown("bibliography.md")
 This can be useful to create your Readme for instance or to send the instructions file for your clients to install your package.
 
 ```{r, eval=FALSE}
-path <- system.file("DESCRIPTION", package = "visualidentity")
+path <- system.file("DESCRIPTION", package = "chameleon")
 out.dir <- tempdir()
 create_pkg_desc_file(path, source = c("archive"), to = "html")
 ```

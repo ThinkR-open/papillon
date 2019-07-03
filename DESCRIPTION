@@ -1,17 +1,20 @@
-Package: visualidentity
-Title: Helps creating company visual identity
-Version: 0.0.0.9000
+Package: chameleon
+Title: Build And Highlight Package Documentation With Customized
+    Templates
+Version: 0.0.1.9000
 Authors@R: 
     person(given = "Sébastien",
            family = "Rochette",
            role = c("aut", "cre"),
-           email = "sebastien@thinkr.fr")
+           email = "sebastien@thinkr.fr",
+           comment = c(ORCID = "0000-0002-1565-9313"))
 Description: Helps creating company visual identity. Build your
     templates for your package vignettes, reports with {bookdown}, package
-    presentation with {pkgdown}. Allow for code folding.
+    presentation with {pkgdown}. Highlight your documentation in your
+    projects.  Allow for code folding.
 License: GPL-3
-URL: https://github.com/Thinkr-open/visualidentity
-BugReports: https://github.com/Thinkr-open/visualidentity/issues
+URL: https://github.com/Thinkr-open/chameleon
+BugReports: https://github.com/Thinkr-open/chameleon/issues
 Imports: 
     attachment,
     bookdown,

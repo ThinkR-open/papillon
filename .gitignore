@@ -5,3 +5,7 @@ inst/docs/rsconnect
 rsconnect
 doc
 Meta
+inst/docs
+docs
+*.Rproj
+.Rhistory

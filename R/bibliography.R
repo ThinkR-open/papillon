@@ -48,7 +48,7 @@ create_biblio_file <- function(packages, out.dir,
   if (missing(custom.md)) {custom.md <- ""}
 
   # Read template
-  bib <- system.file("templates/bibliography.Rmd", package = "visualidentity")
+  bib <- system.file("templates/bibliography.Rmd", package = "chameleon")
   bib_lines <- readr::read_lines(bib)
 
   # temporary output

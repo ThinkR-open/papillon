@@ -1,5 +1,7 @@
 usethis::use_build_ignore("devstuff_history.R")
 usethis::use_gpl3_license("ThinkR")
+usethis::use_git_ignore("*.Rproj")
+usethis::use_git_ignore(".Rhistory")
 
 # Documentation
 usethis::use_readme_rmd()
@@ -16,17 +18,19 @@ attachment::att_to_description()
 
 # Documentation ----
 ## _pkgdown
-visualidentity::open_pkgdown_function(path = "docs")
-visualidentity::build_pkgdown(
+chameleon::open_pkgdown_function(path = "docs")
+chameleon::build_pkgdown(
   lazy = TRUE,
   yml = system.file("pkgdown/_pkgdown.yml", package = "thinkridentity"),
   favicon = system.file("pkgdown/favicon.ico", package = "thinkridentity"),
   move = TRUE, clean_before = TRUE
 )
 
-visualidentity::open_pkgdown()
+## Remove this one from git
+usethis::use_git_ignore("docs")
+usethis::use_git_ignore("inst/docs")
 
-## __ deploy on rsconnect
+## __ deploy {pkgdown} on rsconnect
 usethis::use_git_ignore("docs/rsconnect")
 usethis::use_git_ignore("inst/docs/rsconnect")
 usethis::use_git_ignore("rsconnect")
@@ -39,15 +43,15 @@ rsconnect::deployApp(
   ".",                       # the directory containing the content
   appFiles = list.files(".", recursive = TRUE), # the list of files to include as dependencies (all of them)
   appPrimaryDoc = "index.html",                 # the primary file
-  appName = "visualidentity",                   # name of the endpoint (unique to your account on Connect)
-  appTitle = "visualidentity",                  # display name for the content
+  appName = "chameleon",                   # name of the endpoint (unique to your account on Connect)
+  appTitle = "chameleon",                  # display name for the content
   account = account_name,                # your Connect username
   server = account_server                    # the Connect server, see rsconnect::accounts()
 )
 setwd(origwd)
 
 # Bibliography file
-visualidentity::create_pkg_biblio_file(to = "html", out.dir = "inst", edit = FALSE)
+chameleon::create_pkg_biblio_file(to = "html", out.dir = "inst", edit = FALSE)
 
 # Utils for dev
 devtools::install(upgrade = "never")
