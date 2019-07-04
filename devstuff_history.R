@@ -60,3 +60,5 @@ devtools::install(upgrade = "never")
 # devtools::load_all()
 devtools::check(vignettes = TRUE)
 
+# CI
+usethis::use_travis()

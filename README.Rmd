@@ -2,6 +2,11 @@
 output: github_document
 ---
 
+<!-- badges: start -->
+[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Travis build status](https://travis-ci.org/ThinkR-open/chameleon.svg?branch=master)](https://travis-ci.org/ThinkR-open/chameleon)
+<!-- badges: end -->
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r setup, include = FALSE}
@@ -46,7 +51,7 @@ open_guide_function(path = "inst/report")
 You can use `build_pkgdown()` using your own template basis. By default, it uses the {pkgdown} original template.  
 To use your own template, it is better to create a R package with all necessary files (See <https://github.com/tidyverse/tidytemplate> as an example).  
 
-*You can then define your own "_pkgdown.yml" file that will call your template when building the site:  *
+*You can then define your own `_pkgdown.yml` file that will call your template when building the site:*
 ```yaml
 template:
   package: mypackagetemplate
