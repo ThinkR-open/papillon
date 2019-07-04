@@ -1,5 +1,9 @@
-pandoc: '2.7'
+pandoc: '2.2'
 pkgdown: 1.3.0
 pkgdown_sha: ~
-articles: []
+articles:
+  aa-bookdown-from-vignettes: aa-bookdown-from-vignettes.html
+  ab-set-pkgdown-internal: ab-set-pkgdown-internal.html
+  ac-create-bibliography-file: ac-create-bibliography-file.html
+  ad-create-description-file: ad-create-description-file.html
 
