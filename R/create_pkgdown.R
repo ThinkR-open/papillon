@@ -3,7 +3,7 @@
 #' @param path Path to the pkgdown inside your package
 #'
 #' @export
-open_pkgdown_function <- function(path = "docs") {
+open_pkgdown_function <- function(path = "inst/docs") {
 
   pkg_name <- read.dcf("DESCRIPTION")[1,"Package"]
   fun_template <- system.file("templates/open_pkgdown_template.R", package = "chameleon")
