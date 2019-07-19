@@ -114,7 +114,7 @@
       <h1>Create a pkgdown site inside your package</h1>
                         <h4 class="author">Vignette Author</h4>
             
-            <h4 class="date">2019-07-04</h4>
+            <h4 class="date">2019-07-19</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/Thinkr-open/chameleon/blob/master/vignettes/ab-set-pkgdown-internal.Rmd"><code>vignettes/ab-set-pkgdown-internal.Rmd</code></a></small>
       <div class="hidden name"><code>ab-set-pkgdown-internal.Rmd</code></div>
@@ -140,30 +140,19 @@
 <a class="sourceLine" id="cb1-2" data-line-number="2">  <span class="dt">move =</span> <span class="ot">TRUE</span>, <span class="dt">clean =</span> <span class="ot">TRUE</span></a>
 <a class="sourceLine" id="cb1-3" data-line-number="3">)</a></code></pre></div>
 </div>
-<div id="allow-code-folding" class="section level2">
-<h2 class="hasAnchor">
-<a href="#allow-code-folding" class="anchor"></a>Allow code folding</h2>
-<p>For code folding to be available in the site, each vignette needs to be initiated with a script. However, {pkgdown} does not use YAML of vignettes to build the site.<br>
-The script below needs to be added as is in the vignette, below the YAML:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">"text/javascript"</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Comparison">&gt;</a></span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="at">$</span>(document).<span class="at">ready</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/function">function</a></span> () <span class="op">{</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">  <span class="va">window</span>.<span class="at">initializeCodeFolding</span>(<span class="st">"show"</span> <span class="op">===</span> <span class="st">"hide"</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="op">}</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw">&lt;/script&gt;</span> </a></code></pre></div>
-</div>
 <div id="help-user-find-the-site" class="section level2">
 <h2 class="hasAnchor">
 <a href="#help-user-find-the-site" class="anchor"></a>Help user find the site</h2>
 <p>Function <code><a href="../reference/open_pkgdown_function.html">open_pkgdown_function()</a></code> adds function <code>open_pkgdown()</code> inside your package that will open the userguide on demand.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">chameleon<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/chameleon/topics/open_pkgdown_function">open_pkgdown_function</a></span>(<span class="dt">path =</span> <span class="st">"docs"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">chameleon<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/chameleon/topics/open_pkgdown_function">open_pkgdown_function</a></span>()</a></code></pre></div>
 <p>Users of your package (<code>pkg</code>) can now have access to the site using:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">pkg<span class="op">::</span><span class="kw">open_pkgdown</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">pkg<span class="op">::</span><span class="kw">open_pkgdown</span>()</a></code></pre></div>
 <p>Add these in your documentation and/or add a message when loading the package with this function inside your package:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co">#' @title .onAttach</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#' @noRd</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">.onAttach &lt;-<span class="st"> </span><span class="cf">function</span>(libname, pkgname) {</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">message</a></span>(<span class="st">"Open the HTML documentation with deeptools::open_pkgdown()"</span>)</a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co">#' @title .onAttach</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#' @noRd</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">.onAttach &lt;-<span class="st"> </span><span class="cf">function</span>(libname, pkgname) {</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">message</a></span>(<span class="st">"Open the HTML documentation with deeptools::open_pkgdown()"</span>)</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">}</a></code></pre></div>
 </div>
 </div>
   </div>
@@ -176,7 +165,6 @@ The script below needs to be added as is in the vignette, below the YAML:</p>
 <li>
 <a href="#create-a-pkgdown-site-inside-your-package">Create a pkgdown site inside your package</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#create-the-pkgdown">Create the pkgdown</a></li>
-      <li><a href="#allow-code-folding">Allow code folding</a></li>
       <li><a href="#help-user-find-the-site">Help user find the site</a></li>
       </ul>
 </li>
