@@ -13,6 +13,9 @@ status](https://travis-ci.org/ThinkR-open/chameleon.svg?branch=master)](https://
 The goal of {chameleon} is to build and highlight package documentation
 with customized templates.
 
+*Complete documentation in the {pkgdown} site:
+<https://thinkr-open.github.io/chameleon/>*
+
 ## Installation
 
 ``` r
@@ -71,7 +74,8 @@ Help users find your pkgdown website with function
 `open_pkgdown_function()`. This adds function `open_pkgdown()` inside
 your package that will open the site on demand. *This may make your
 package not pass warnings in checks, but remember this is for internal
-or private use. For public use, you can publish your pkgdown site.*
+or private use. For public use, you can publish your pkgdown site
+directly online.*
 
 ``` r
 chameleon::open_pkgdown_function()
@@ -109,3 +113,7 @@ create_pkg_desc_file(path, source = c("archive"), to = "html")
 # Use with results="asis" in a Rmd
 shiny::includeHTML(file.path(out.dir, "pkg_description.html"))
 ```
+
+Please note that the ‘chameleon’ project is released with a [Contributor
+Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,
+you agree to abide by its terms.

@@ -2,6 +2,7 @@ usethis::use_build_ignore("devstuff_history.R")
 usethis::use_gpl3_license("ThinkR")
 usethis::use_git_ignore("*.Rproj")
 usethis::use_git_ignore(".Rhistory")
+usethis::use_code_of_conduct()
 
 # Documentation
 usethis::use_readme_rmd()
