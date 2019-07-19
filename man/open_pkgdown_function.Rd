@@ -4,7 +4,7 @@
 \alias{open_pkgdown_function}
 \title{Create a function inside R folder in your package to open pkgdown website}
 \usage{
-open_pkgdown_function(path = "docs")
+open_pkgdown_function(path = "inst/docs")
 }
 \arguments{
 \item{path}{Path to the pkgdown inside your package}

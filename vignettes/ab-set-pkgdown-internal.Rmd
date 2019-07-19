@@ -31,26 +31,12 @@ chameleon::build_pkgdown(
 )
 ```
 
-
-## Allow code folding
-
-For code folding to be available in the site, each vignette needs to be initiated with a script. However, {pkgdown} does not use YAML of vignettes to build the site.  
-The script below needs to be added as is in the vignette, below the YAML:  
-
-```html
-<script type="text/javascript">
-$(document).ready(function () {
-  window.initializeCodeFolding("show" === "hide");
-});
-</script> 
-```
-
 ## Help user find the site
 
 Function `open_pkgdown_function()` adds function `open_pkgdown()` inside your package that will open the userguide on demand.
 
 ```{r, eval=FALSE}
-chameleon::open_pkgdown_function(path = "docs")
+chameleon::open_pkgdown_function()
 ```
 
 Users of your package (`pkg`) can now have access to the site using:  
