@@ -11,11 +11,11 @@
 #' @export
 create_pkg_desc_file <- function(path = "DESCRIPTION", source = c("archive", "github", "git"), url,
                                  out.dir,
-                                 to = c("html", "markdown"),
+                                 to = c("html", "markdown", "raw"),
                                  edit = TRUE) {
 
   source <- match.arg(source, c("archive", "github", "git"), several.ok = FALSE)
-  to <- match.arg(to, c("html", "markdown"), several.ok = FALSE)
+  to <- match.arg(to, c("html", "markdown", "raw"), several.ok = FALSE)
   if (missing(out.dir)) {out.dir <- tempdir()}
   out.dir <- normalizePath(out.dir)
 
@@ -58,10 +58,13 @@ create_pkg_desc_file <- function(path = "DESCRIPTION", source = c("archive", "gi
 
   content <- paste(
     paste0('# ', pkg),
-    paste0("This is package {", pkg, "}: ", desc$get("Title"), ".  "),
-    paste0("You are using version ", version, "."),
+    "<!-- description: start -->",
+    paste0("This is package {", pkg, "}: ", gsub("\\s+|\\\\n", " ", desc$get("Title")), ".  "),
+    paste0("Current version is ", version, "."),
+    "<!-- description: end -->",
     '',
     '## Installation',
+    "<!-- install: start -->",
     paste0('The list of dependencies required to install this package is: ',
            paste(deps, collapse = ", "), '.'),
     '',
@@ -78,12 +81,16 @@ create_pkg_desc_file <- function(path = "DESCRIPTION", source = c("archive", "gi
     paste(readLines(file.path(temp_dir, "deps.R")), collapse = "\n"),
     '```',
     '',
+    "<!-- install: end -->",
     '',
     sep = "\n")
 
   # write content to Rmd
   readr::write_lines(enc2utf8(content), file.path(temp_dir, "content.Rmd"))
 
+  if (to == "raw") {
+    out_lines <- readr::read_lines(file.path(temp_dir, "content.Rmd"))
+  } else {
   # render file
   render_external(input = file.path(temp_dir, "content.Rmd"),
                   output_format = "bookdown::html_document2",
@@ -99,6 +106,7 @@ create_pkg_desc_file <- function(path = "DESCRIPTION", source = c("archive", "gi
 
   html_out <- file.path(out.dir, "content_light.html")
   readr::write_lines(enc2utf8(out_lines), html_out)
+  }
 
   out_from_lines(out_lines = out_lines, to = to,
                  out.dir = out.dir, filename = "pkg_description",

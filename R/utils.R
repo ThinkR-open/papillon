@@ -37,24 +37,34 @@ render_external <- function(input, output_format = "rmarkdown::html_document",
 
 #' write output in utf8
 #' @param out_lines vector of html lines to write
-#' @param to Format to convert to. "html" or "markdown"
+#' @param to Format to convert to. "html", "markdown" or "raw" text
 #' @param out.dir Directory where to save output md file
 #' @param filename filename without extentions
 #' @param edit Logical. Whether to open file for edition
-out_from_lines <- function(out_lines, to = c("html", "markdown"), out.dir, filename = "file",
+out_from_lines <- function(out_lines, to = c("html", "markdown", "raw"), out.dir, filename = "file",
                            edit = TRUE) {
-  to <- match.arg(to, c("html", "markdown"), several.ok = FALSE)
+  to <- match.arg(to, c("html", "markdown", "raw"), several.ok = FALSE)
 
   if (missing(out.dir)) {out.dir <- tempdir()}
   out.dir <- normalizePath(out.dir)
 
-  if (to == "html") {
-    html_out <- file.path(out.dir, paste0(filename, ".html"))
-    readr::write_lines(enc2utf8(out_lines), html_out)
-    message(crayon::green("File "), html_out, crayon::green(" created"))
+  if (to == "raw") {
+    file_out <- file.path(out.dir, paste0(filename, ".md"))
+    readr::write_lines(enc2utf8(out_lines), file_out)
+    message(crayon::green("File "), file_out, crayon::green(" created"))
     if (isTRUE(edit)) {
-      usethis::edit_file(html_out)
-      message(crayon::green("You can now edit "), html_out)
+      usethis::edit_file(file_out)
+      message(crayon::green("You can now edit "), file_out)
+    }
+  }
+  
+  if (to == "html") {
+    file_out <- file.path(out.dir, paste0(filename, ".html"))
+    readr::write_lines(enc2utf8(out_lines), file_out)
+    message(crayon::green("File "), file_out, crayon::green(" created"))
+    if (isTRUE(edit)) {
+      usethis::edit_file(file_out)
+      message(crayon::green("You can now edit "), file_out)
     }
   }
 
@@ -62,13 +72,14 @@ out_from_lines <- function(out_lines, to = c("html", "markdown"), out.dir, filen
     html_tmp <- tempfile(fileext = ".html")
     readr::write_lines(enc2utf8(out_lines), html_tmp)
 
-    md_out <- file.path(out.dir, paste0(filename, ".md"))
-    rmarkdown::pandoc_convert(html_tmp, to = "markdown", output = md_out)
+    file_out <- file.path(out.dir, paste0(filename, ".md"))
+    rmarkdown::pandoc_convert(html_tmp, to = "markdown", output = file_out)
 
-    message(crayon::green("File "), md_out, crayon::green(" created"))
+    message(crayon::green("File "), file_out, crayon::green(" created"))
     if (isTRUE(edit)) {
-      usethis::edit_file(md_out)
-      message(crayon::green("You can now edit "), md_out)
+      usethis::edit_file(file_out)
+      message(crayon::green("You can now edit "), file_out)
     }
   }
+  invisible(file_out)
 }

@@ -32,3 +32,12 @@ create_pkg_desc_file(path, source = c("archive"), to = "html")
 shiny::includeHTML(file.path(out.dir, "pkg_description.html"))
 ```
 
+## Create and update a custom README with installation instructions
+
+- This uses {usethis} Readme template for packages and fill the installation instructions.  
+- This function can be run anytime during project development as it will only update the description and installation parts
+
+```{r, eval=FALSE}
+chameleon::generate_readme_rmd()
+```
+

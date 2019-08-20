@@ -6,6 +6,7 @@ usethis::use_code_of_conduct()
 
 # Documentation
 usethis::use_readme_rmd()
+chameleon::generate_readme_rmd(parts = "description")
 usethis::use_vignette("aa-bookdown-from-vignettes")
 usethis::use_vignette("ab-set-pkgdown-internal")
 usethis::use_vignette("ac-create-bibliography-file")

@@ -16,7 +16,7 @@ create_pkg_biblio_file(path = "DESCRIPTION", out.dir,
 \item{output}{Vector with "packages" (list of packages as bullet points),
 "references" (list of citation references) or both "packages" and "references"}
 
-\item{to}{Format to convert to. "html" or "markdown"}
+\item{to}{Format to convert to. "html", "markdown" or "raw" text}
 
 \item{custom.md}{Vector of markdown text to add to the document before rendering}
 

@@ -19,17 +19,26 @@ knitr::opts_chunk$set(
 ```
 # chameleon
 
-The goal of {chameleon} is to build and highlight package documentation with customized templates.
+<!-- description: start -->
+This is package {chameleon}: Build And Highlight Package Documentation With Customized
+    Templates.  
+You are using version 0.0.1.9000.
+<!-- description: end -->
 
 *Complete documentation in the {pkgdown} site: https://thinkr-open.github.io/chameleon/*
 
 ## Installation
+<!-- install: start -->
+The list of dependencies required to install this package is: attachment, bookdown, cli, crayon, desc, devtools, knitr, magrittr, pkgdown, readr, remotes, rmarkdown, shiny, usethis, utils.
 
-```{r, eval=FALSE}
+To install the package, you can run the following script
+
+```{r, echo=TRUE, eval=FALSE}
 # install.packages("remotes")
-remotes::install_github("ThinkR-open/chameleon")
+remotes::install_github(repo = "Thinkr-open/chameleon")
 ```
 
+<!-- install: end -->
 
 ## Examples
 ### Build a book from vignettes inside a package
@@ -104,6 +113,19 @@ create_pkg_desc_file(path, source = c("archive"), to = "html")
 shiny::includeHTML(file.path(out.dir, "pkg_description.html"))
 ```
 
+## Create and update a custom README with installation instructions
+
+- `generate_readme()` uses {usethis} Readme template for packages and fill the installation instructions.  
+- This function can be run anytime during project development as it will only update the description and installation parts
+
+```{r, eval=FALSE}
+#usethis::use_readme_rmd
+chameleon::generate_readme_rmd()
+chameleon::generate_readme_rmd(parts = "description")
+```
+  
+  
+  
 Please note that the 'chameleon' project is released with a
 [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.

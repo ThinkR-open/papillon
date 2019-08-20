@@ -15,7 +15,7 @@ create_biblio_file(packages, out.dir, output = c("packages",
 \item{output}{Vector with "packages" (list of packages as bullet points),
 "references" (list of citation references) or both "packages" and "references"}
 
-\item{to}{Format to convert to. "html" or "markdown"}
+\item{to}{Format to convert to. "html", "markdown" or "raw" text}
 
 \item{custom.md}{Vector of markdown text to add to the document before rendering}
 

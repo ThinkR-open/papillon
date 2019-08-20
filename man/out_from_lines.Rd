@@ -4,13 +4,13 @@
 \alias{out_from_lines}
 \title{write output in utf8}
 \usage{
-out_from_lines(out_lines, to = c("html", "markdown"), out.dir,
+out_from_lines(out_lines, to = c("html", "markdown", "raw"), out.dir,
   filename = "file", edit = TRUE)
 }
 \arguments{
 \item{out_lines}{vector of html lines to write}
 
-\item{to}{Format to convert to. "html" or "markdown"}
+\item{to}{Format to convert to. "html", "markdown" or "raw" text}
 
 \item{out.dir}{Directory where to save output md file}
 
