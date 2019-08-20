@@ -129,9 +129,9 @@
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">path &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"DESCRIPTION"</span>, <span class="dt">package =</span> <span class="st">"chameleon"</span>)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">out.dir &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/tempfile">tempdir</a></span>()</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="../reference/create_pkg_desc_file.html">create_pkg_desc_file</a></span>(path, <span class="dt">source =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"archive"</span>), <span class="dt">to =</span> <span class="st">"html"</span>)</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; File /tmp/RtmpCMLKJB/pkg_description.html created</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; ● Edit '/tmp/RtmpCMLKJB/pkg_description.html'</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; You can now edit /tmp/RtmpCMLKJB/pkg_description.html</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; File /tmp/RtmpmSeBeP/pkg_description.html created</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; ● Edit '/tmp/RtmpmSeBeP/pkg_description.html'</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; You can now edit /tmp/RtmpmSeBeP/pkg_description.html</span></a></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/include">includeHTML</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(out.dir, <span class="st">"pkg_description.html"</span>))</a></code></pre></div>
 <div class="container-fluid main-container">
 
@@ -149,12 +149,14 @@
 <div id="chameleon" class="section level1">
 <h1 class="hasAnchor">
 <a href="#chameleon" class="anchor"></a>chameleon</h1>
-<p>This is package {chameleon}: Build And Highlight Package Documentation With Customized
-Templates.<br>
-You are using version 0.0.1.9000.</p>
+<!-- description: start -->
+<p>This is package {chameleon}: Build And Highlight Package Documentation With Customized Templates.<br>
+Current version is 0.0.1.9000.
+<!-- description: end --></p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
+<!-- install: start -->
 <p>The list of dependencies required to install this package is: attachment, bookdown, cli, crayon, desc, devtools, knitr, magrittr, pkgdown, readr, remotes, rmarkdown, shiny, usethis, utils.</p>
 <p>To install the package, you can run the following script</p>
 <pre class="r"><code><a href="https://www.rdocumentation.org/packages/remotes/topics/install_local"># install.packages("remotes")
@@ -170,6 +172,7 @@ to_install &lt;- c("attachment", "bookdown", "cli", "crayon", "desc", "devtools"
       install.packages(i)
     }
   }</code></pre>
+<!-- install: end -->
 </div>
 </div>
 
@@ -177,6 +180,16 @@ to_install &lt;- c("attachment", "bookdown", "cli", "crayon", "desc", "devtools"
 
 
 </div>
+</div>
+<div id="create-and-update-a-custom-readme-with-installation-instructions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#create-and-update-a-custom-readme-with-installation-instructions" class="anchor"></a>Create and update a custom README with installation instructions</h2>
+<ul>
+<li>This uses {usethis} Readme template for packages and fill the installation instructions.<br>
+</li>
+<li>This function can be run anytime during project development as it will only update the description and installation parts</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">chameleon<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/chameleon/topics/generate_readme_rmd">generate_readme_rmd</a></span>()</a></code></pre></div>
 </div>
   </div>
 
@@ -186,6 +199,7 @@ to_install &lt;- c("attachment", "bookdown", "cli", "crayon", "desc", "devtools"
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#to-describe-your-package-and-how-to-install-it">To describe your package and how to install it</a></li>
+      <li><a href="#create-and-update-a-custom-readme-with-installation-instructions">Create and update a custom README with installation instructions</a></li>
       </ul>
 </div>
       </div>

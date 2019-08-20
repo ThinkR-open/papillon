@@ -125,13 +125,19 @@
 <div id="chameleon" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#chameleon" class="anchor"></a>chameleon</h1></div>
-<p>The goal of {chameleon} is to build and highlight package documentation with customized templates.</p>
+<!-- description: start -->
+<p>This is package {chameleon}: Build And Highlight Package Documentation With Customized Templates.<br>
+You are using version 0.0.1.9000. <!-- description: end --></p>
 <p><em>Complete documentation in the {pkgdown} site: <a href="https://thinkr-open.github.io/chameleon/" class="uri">https://thinkr-open.github.io/chameleon/</a></em></p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
+<!-- install: start -->
+<p>The list of dependencies required to install this package is: attachment, bookdown, cli, crayon, desc, devtools, knitr, magrittr, pkgdown, readr, remotes, rmarkdown, shiny, usethis, utils.</p>
+<p>To install the package, you can run the following script</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("remotes")</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">remotes<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"ThinkR-open/chameleon"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb1-2" data-line-number="2">remotes<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="dt">repo =</span> <span class="st">"Thinkr-open/chameleon"</span>)</a></code></pre></div>
+<!-- install: end -->
 </div>
 <div id="examples" class="section level2">
 <h2 class="hasAnchor">
@@ -185,6 +191,19 @@ To use your own template, it is better to create a R package with all necessary 
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw"><a href="reference/create_pkg_desc_file.html">create_pkg_desc_file</a></span>(path, <span class="dt">source =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"archive"</span>), <span class="dt">to =</span> <span class="st">"html"</span>)</a></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co"># Use with results="asis" in a Rmd</span></a>
 <a class="sourceLine" id="cb9-2" data-line-number="2">shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/include">includeHTML</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(out.dir, <span class="st">"pkg_description.html"</span>))</a></code></pre></div>
+</div>
+<div id="create-and-update-a-custom-readme-with-installation-instructions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#create-and-update-a-custom-readme-with-installation-instructions" class="anchor"></a>Create and update a custom README with installation instructions</h2>
+<ul>
+<li>
+<code>generate_readme()</code> uses {usethis} Readme template for packages and fill the installation instructions.<br>
+</li>
+<li>This function can be run anytime during project development as it will only update the description and installation parts</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co">#usethis::use_readme_rmd</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">chameleon<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/chameleon/topics/generate_readme_rmd">generate_readme_rmd</a></span>()</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">chameleon<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/chameleon/topics/generate_readme_rmd">generate_readme_rmd</a></span>(<span class="dt">parts =</span> <span class="st">"description"</span>)</a></code></pre></div>
 <p>Please note that the ‘chameleon’ project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>

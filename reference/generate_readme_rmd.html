@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create package description file — create_pkg_desc_file • chameleon</title>
+<title>Create and update a custom README.Rmd with installation instructions — generate_readme_rmd • chameleon</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -29,9 +29,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script>
 
-<meta property="og:title" content="Create package description file — create_pkg_desc_file" />
+<meta property="og:title" content="Create and update a custom README.Rmd with installation instructions — generate_readme_rmd" />
 
-<meta property="og:description" content="Create package description file" />
+<meta property="og:description" content="Create and update a custom README.Rmd with installation instructions" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -142,57 +142,65 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create package description file</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Thinkr-open/chameleon/blob/master/R/pkg_description.R'><code>R/pkg_description.R</code></a></small>
-    <div class="hidden name"><code>create_pkg_desc_file.Rd</code></div>
+    <h1>Create and update a custom README.Rmd with installation instructions</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Thinkr-open/chameleon/blob/master/R/generate_readme.R'><code>R/generate_readme.R</code></a></small>
+    <div class="hidden name"><code>generate_readme_rmd.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Create package description file</p>
+    <p>Create and update a custom README.Rmd with installation instructions</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>create_pkg_desc_file</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"DESCRIPTION"</span>, <span class='kw'>source</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"archive"</span>,
-  <span class='st'>"github"</span>, <span class='st'>"git"</span>), <span class='no'>url</span>, <span class='no'>out.dir</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"html"</span>, <span class='st'>"markdown"</span>, <span class='st'>"raw"</span>),
-  <span class='kw'>edit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>generate_readme_rmd</span>(<span class='kw'>base_path</span> <span class='kw'>=</span> <span class='kw pkg'>usethis</span><span class='kw ns'>::</span><span class='fu'><a href='https://usethis.r-lib.org/reference/proj_utils.html'>proj_get</a></span>(),
+  <span class='kw'>parts</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"description"</span>, <span class='st'>"installation"</span>), <span class='kw'>source</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"archive"</span>,
+  <span class='st'>"github"</span>, <span class='st'>"git"</span>), <span class='kw'>edit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>url</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>path</th>
-      <td><p>Path to description file</p></td>
+      <th>base_path</th>
+      <td><p>Path of the package to generate Readme from</p></td>
+    </tr>
+    <tr>
+      <th>parts</th>
+      <td><p>Parts to modify in the Readme: c("description", "installation")</p></td>
     </tr>
     <tr>
       <th>source</th>
       <td><p>Will the package be delivered as archive, from github or from another git?</p></td>
     </tr>
     <tr>
+      <th>edit</th>
+      <td><p>Logical. Whether to open README.Rmd</p></td>
+    </tr>
+    <tr>
       <th>url</th>
       <td><p>url of the repository if not in URL in DESCRIPTION. Used when source is github or git.</p></td>
     </tr>
-    <tr>
-      <th>out.dir</th>
-      <td><p>Path to save output file</p></td>
-    </tr>
-    <tr>
-      <th>to</th>
-      <td><p>Format to convert to. "html", "markdown" or "raw" text</p></td>
-    </tr>
-    <tr>
-      <th>edit</th>
-      <td><p>Logical. Whether to open file for edition</p></td>
-    </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>A README.Rmd file</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='fu'>generate_readme_rmd</span>()
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
