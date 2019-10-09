@@ -9,6 +9,12 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+<script type="text/javascript">
+$(document).ready(function () {
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
+
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -27,7 +33,7 @@ Use `build_pkgdown` with default option to build the {pkgdown} site and copy it 
 
 ```{r, eval=FALSE}
 chameleon::build_pkgdown(
-  move = TRUE, clean = TRUE
+  move = TRUE, clean_before = TRUE
 )
 ```
 

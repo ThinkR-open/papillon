@@ -9,6 +9,12 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+<script type="text/javascript">
+$(document).ready(function () {
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
+
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -40,10 +46,6 @@ Function `build_book()` will copy your vignettes in the book directory and build
 chameleon::build_book(path = "inst/report", path.v = "vignettes",
             output_format = c("bookdown::gitbook", "bookdown::pdf_book"))
 ```
-
-## Create index.Rmd with package information from DESCRIPTION
-
-## Create zzz-references.Rmd with list of dependencies
 
 ## Create short book with index and references only
 

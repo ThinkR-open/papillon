@@ -1,12 +1,18 @@
 ---
-title: "ad-create-description-file"
+title: "Create package description page"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{ad-create-description-file}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-  
+
+<script type="text/javascript">
+$(document).ready(function () {
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
+
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
 collapse = TRUE,

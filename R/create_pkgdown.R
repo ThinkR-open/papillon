@@ -50,7 +50,9 @@ build_pkgdown <- function(move = TRUE, clean_before = TRUE, clean_after = TRUE,
                           yml, favicon, preview = NA, ...) {
 
   if (!missing(yml)) {
-    file.copy(yml, "_pkgdown.yml", overwrite = TRUE)
+    if (yml != "_pkgdown.yml") {
+      file.copy(yml, "_pkgdown.yml", overwrite = TRUE)
+    }
     use_build_ignore("_pkgdown.yml")
   }
 
