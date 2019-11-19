@@ -1,7 +1,5 @@
 ---
 title: "Create a book from vignettes with bookdown"
-author: "Sébastien Rochette"
-date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{01 - Create a book from vignettes}

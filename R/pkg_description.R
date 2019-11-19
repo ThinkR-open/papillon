@@ -38,7 +38,7 @@ create_pkg_desc_file <- function(path = "DESCRIPTION", source = c("archive", "gi
 
   # Installation script
   if (source == "archive") {
-    install_pkg <- paste0("remotes::install_local(path = \"", pkg, ".", version, ".tar.gz\")")
+    install_pkg <- paste0("remotes::install_local(path = \"", pkg, "_", version, ".tar.gz\")")
   } else if (grepl("github", url)) {
     install_pkg <- paste0("remotes::install_github(repo = \"",
                           gsub(".*github.com/", "", url), "\")")
