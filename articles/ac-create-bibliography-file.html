@@ -6,13 +6,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Create Bibliography File • chameleon</title>
-<!-- jquery --><script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="../cosmo.css" rel="stylesheet">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script><!-- Bootstrap --><link href="../cosmo.css" rel="stylesheet">
 <link href="../thinkr.css" rel="stylesheet">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Create Bibliography File">
-<meta property="og:description" content="">
+<meta property="og:description" content="chameleon">
 <meta name="twitter:card" content="summary">
 <!-- mathjax
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
@@ -35,7 +36,7 @@
 </script>
 -->
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -95,7 +96,7 @@
 </div>
         </li>
         <li>
-  <a href="https://github.com/Thinkr-open/chameleon">
+  <a href="https://github.com/Thinkr-open/chameleon/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -113,7 +114,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Create Bibliography File</h1>
+      <h1 data-toc-skip>Create Bibliography File</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/Thinkr-open/chameleon/blob/master/vignettes/ac-create-bibliography-file.Rmd"><code>vignettes/ac-create-bibliography-file.Rmd</code></a></small>
@@ -127,29 +128,29 @@
 $(document).ready(function () {
   window.initializeCodeFolding("show" === "show");
 });
-</script><div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(chameleon)</a></code></pre></div>
+</script><div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">chameleon</span>)</pre></body></html></div>
 <div id="build-a-reference-page" class="section level2">
 <h2 class="hasAnchor">
 <a href="#build-a-reference-page" class="anchor"></a>Build a reference page</h2>
 <p>To award people hard working for open-source, it is always good to cite their work. In order to add an informative page in your Shiny applications for instance, you can create a html or markdown page listing all package dependencies used.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">chameleon<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/chameleon/man/create_pkg_biblio_file.html">create_pkg_biblio_file</a></span>(<span class="dt">to =</span> <span class="st">"html"</span>, <span class="dt">out.dir =</span> <span class="st">"inst"</span>)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co"># Can be included in a shiny app using </span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">shiny<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shiny/man/include.html">includeHTML</a></span>(<span class="st">"bibliography.html"</span>)</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co"># OR</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">chameleon<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/chameleon/man/create_pkg_biblio_file.html">create_pkg_biblio_file</a></span>(<span class="dt">to =</span> <span class="st">"markdown"</span>)</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co"># Can be included in a shiny app using </span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">shiny<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shiny/man/include.html">includeMarkdown</a></span>(<span class="st">"bibliography.md"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="kw pkg">chameleon</span><span class="kw ns">::</span><span class="fu"><a href="../reference/create_pkg_biblio_file.html">create_pkg_biblio_file</a></span>(<span class="kw">to</span> <span class="kw">=</span> <span class="st">"html"</span>, <span class="kw">out.dir</span> <span class="kw">=</span> <span class="st">"inst"</span>)
+<span class="co"># Can be included in a shiny app using </span>
+<span class="kw pkg">shiny</span><span class="kw ns">::</span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/reexports.html">includeHTML</a></span>(<span class="st">"bibliography.html"</span>)
+<span class="co"># OR</span>
+<span class="kw pkg">chameleon</span><span class="kw ns">::</span><span class="fu"><a href="../reference/create_pkg_biblio_file.html">create_pkg_biblio_file</a></span>(<span class="kw">to</span> <span class="kw">=</span> <span class="st">"markdown"</span>)
+<span class="co"># Can be included in a shiny app using </span>
+<span class="kw pkg">shiny</span><span class="kw ns">::</span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/reexports.html">includeMarkdown</a></span>(<span class="st">"bibliography.md"</span>)</pre></body></html></div>
 </div>
 <div id="add-references-to-this-page" class="section level2">
 <h2 class="hasAnchor">
 <a href="#add-references-to-this-page" class="anchor"></a>Add references to this page</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">desc_file &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"DESCRIPTION"</span>, <span class="dt">package =</span> <span class="st">"chameleon"</span>)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">out.dir &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span>()</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">chameleon<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/chameleon/man/create_pkg_biblio_file.html">create_pkg_biblio_file</a></span>(</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">  <span class="dt">path =</span> desc_file, <span class="dt">to =</span> <span class="st">"html"</span>,</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">  <span class="dt">out.dir =</span> out.dir, <span class="dt">edit =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; File /tmp/Rtmp5Nvs4S/bibliography.html created</span></a></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">shiny<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shiny/man/include.html">includeHTML</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(out.dir, <span class="st">"bibliography.html"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">desc_file</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"DESCRIPTION"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"chameleon"</span>)
+<span class="no">out.dir</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span>()
+<span class="kw pkg">chameleon</span><span class="kw ns">::</span><span class="fu"><a href="../reference/create_pkg_biblio_file.html">create_pkg_biblio_file</a></span>(
+  <span class="kw">path</span> <span class="kw">=</span> <span class="no">desc_file</span>, <span class="kw">to</span> <span class="kw">=</span> <span class="st">"html"</span>,
+  <span class="kw">out.dir</span> <span class="kw">=</span> <span class="no">out.dir</span>, <span class="kw">edit</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
+<span class="co">#&gt; File /tmp/Rtmp9kYOOB/bibliography.html created</span></pre></body></html></div>
+<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="kw pkg">shiny</span><span class="kw ns">::</span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/reexports.html">includeHTML</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="no">out.dir</span>, <span class="st">"bibliography.html"</span>))</pre></body></html></div>
 <!-- begin custom_md -->
 <!-- end custom_md -->
 <!-- packages -->
@@ -158,20 +159,20 @@ $(document).ready(function () {
 <h2 class="hasAnchor">
 <a href="#list-of-dependencies" class="anchor"></a>List of dependencies</h2>
 <ul>
-<li>attachment (<span class="citation">Guyader and Rochette (<a href="#ref-R-attachment">2019</a>)</span>)</li>
-<li>bookdown (<span class="citation">Xie (<a href="#ref-R-bookdown">2019</a><a href="#ref-R-bookdown">a</a>)</span>)</li>
-<li>cli (<span class="citation">Csárdi (<a href="#ref-R-cli">2019</a>)</span>)</li>
+<li>attachment (<span class="citation">Guyader and Rochette (<a href="#ref-R-attachment">2020</a>)</span>)</li>
+<li>bookdown (<span class="citation">Xie (<a href="#ref-R-bookdown">2020</a><a href="#ref-R-bookdown">a</a>)</span>)</li>
+<li>cli (<span class="citation">Csárdi (<a href="#ref-R-cli">2020</a>)</span>)</li>
 <li>crayon (<span class="citation">Csárdi (<a href="#ref-R-crayon">2017</a>)</span>)</li>
 <li>desc (<span class="citation">Csárdi, Müller, and Hester (<a href="#ref-R-desc">2018</a>)</span>)</li>
-<li>devtools (<span class="citation">Wickham, Hester, and Chang (<a href="#ref-R-devtools">2019</a>)</span>)</li>
-<li>knitr (<span class="citation">Xie (<a href="#ref-R-knitr">2019</a><a href="#ref-R-knitr">b</a>)</span>)</li>
+<li>devtools (<span class="citation">Wickham, Hester, and Chang (<a href="#ref-R-devtools">2020</a>)</span>)</li>
+<li>knitr (<span class="citation">Xie (<a href="#ref-R-knitr">2020</a><a href="#ref-R-knitr">b</a>)</span>)</li>
 <li>magrittr (<span class="citation">Bache and Wickham (<a href="#ref-R-magrittr">2014</a>)</span>)</li>
-<li>pkgdown (<span class="citation">Wickham and Hesselberth (<a href="#ref-R-pkgdown">2019</a>)</span>)</li>
+<li>pkgdown (<span class="citation">Wickham and Hesselberth (<a href="#ref-R-pkgdown">2020</a>)</span>)</li>
 <li>readr (<span class="citation">Wickham, Hester, and Francois (<a href="#ref-R-readr">2018</a>)</span>)</li>
-<li>remotes (<span class="citation">Hester et al. (<a href="#ref-R-remotes">2019</a>)</span>)</li>
-<li>rmarkdown (<span class="citation">Allaire et al. (<a href="#ref-R-rmarkdown">2019</a>)</span>)</li>
-<li>shiny (<span class="citation">Chang et al. (<a href="#ref-R-shiny">2019</a>)</span>)</li>
-<li>usethis (<span class="citation">Wickham and Bryan (<a href="#ref-R-usethis">2019</a>)</span>)</li>
+<li>remotes (<span class="citation">Hester et al. (<a href="#ref-R-remotes">2020</a>)</span>)</li>
+<li>rmarkdown (<span class="citation">Allaire et al. (<a href="#ref-R-rmarkdown">2020</a>)</span>)</li>
+<li>shiny (<span class="citation">Chang et al. (<a href="#ref-R-shiny">2020</a>)</span>)</li>
+<li>usethis (<span class="citation">Wickham and Bryan (<a href="#ref-R-usethis">2020</a>)</span>)</li>
 <li>utils (<span class="citation">(<span class="citeproc-not-found" data-reference-id="R-utils"><strong>???</strong></span>)</span>)</li>
 </ul>
 <!-- end list_of_dependencies --><!-- references --><div id="references" class="section level2 unnumbered">
@@ -179,46 +180,46 @@ $(document).ready(function () {
 <a href="#references" class="anchor"></a>References</h2>
 <div id="refs" class="references">
 <div id="ref-R-rmarkdown">
-<p>Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang, and Richard Iannone. 2019. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown" class="uri">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
+<p>Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang, and Richard Iannone. 2020. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown" class="uri">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
 </div>
 <div id="ref-R-magrittr">
 <p>Bache, Stefan Milton, and Hadley Wickham. 2014. <em>Magrittr: A Forward-Pipe Operator for R</em>. <a href="https://CRAN.R-project.org/package=magrittr" class="uri">https://CRAN.R-project.org/package=magrittr</a>.</p>
 </div>
 <div id="ref-R-shiny">
-<p>Chang, Winston, Joe Cheng, JJ Allaire, Yihui Xie, and Jonathan McPherson. 2019. <em>Shiny: Web Application Framework for R</em>. <a href="https://CRAN.R-project.org/package=shiny" class="uri">https://CRAN.R-project.org/package=shiny</a>.</p>
+<p>Chang, Winston, Joe Cheng, JJ Allaire, Yihui Xie, and Jonathan McPherson. 2020. <em>Shiny: Web Application Framework for R</em>. <a href="https://CRAN.R-project.org/package=shiny" class="uri">https://CRAN.R-project.org/package=shiny</a>.</p>
 </div>
 <div id="ref-R-crayon">
 <p>Csárdi, Gábor. 2017. <em>Crayon: Colored Terminal Output</em>. <a href="https://CRAN.R-project.org/package=crayon" class="uri">https://CRAN.R-project.org/package=crayon</a>.</p>
 </div>
 <div id="ref-R-cli">
-<p>———. 2019. <em>Cli: Helpers for Developing Command Line Interfaces</em>. <a href="https://CRAN.R-project.org/package=cli" class="uri">https://CRAN.R-project.org/package=cli</a>.</p>
+<p>———. 2020. <em>Cli: Helpers for Developing Command Line Interfaces</em>. <a href="https://CRAN.R-project.org/package=cli" class="uri">https://CRAN.R-project.org/package=cli</a>.</p>
 </div>
 <div id="ref-R-desc">
 <p>Csárdi, Gábor, Kirill Müller, and Jim Hester. 2018. <em>Desc: Manipulate Description Files</em>. <a href="https://CRAN.R-project.org/package=desc" class="uri">https://CRAN.R-project.org/package=desc</a>.</p>
 </div>
 <div id="ref-R-attachment">
-<p>Guyader, Vincent, and Sébastien Rochette. 2019. <em>Attachment: Deal with Dependencies</em>. <a href="https://CRAN.R-project.org/package=attachment" class="uri">https://CRAN.R-project.org/package=attachment</a>.</p>
+<p>Guyader, Vincent, and Sébastien Rochette. 2020. <em>Attachment: Deal with Dependencies</em>. <a href="https://CRAN.R-project.org/package=attachment" class="uri">https://CRAN.R-project.org/package=attachment</a>.</p>
 </div>
 <div id="ref-R-remotes">
-<p>Hester, Jim, Gábor Csárdi, Hadley Wickham, Winston Chang, Martin Morgan, and Dan Tenenbaum. 2019. <em>Remotes: R Package Installation from Remote Repositories, Including ’Github’</em>. <a href="https://CRAN.R-project.org/package=remotes" class="uri">https://CRAN.R-project.org/package=remotes</a>.</p>
+<p>Hester, Jim, Gábor Csárdi, Hadley Wickham, Winston Chang, Martin Morgan, and Dan Tenenbaum. 2020. <em>Remotes: R Package Installation from Remote Repositories, Including ’Github’</em>. <a href="https://CRAN.R-project.org/package=remotes" class="uri">https://CRAN.R-project.org/package=remotes</a>.</p>
 </div>
 <div id="ref-R-usethis">
-<p>Wickham, Hadley, and Jennifer Bryan. 2019. <em>Usethis: Automate Package and Project Setup</em>. <a href="https://CRAN.R-project.org/package=usethis" class="uri">https://CRAN.R-project.org/package=usethis</a>.</p>
+<p>Wickham, Hadley, and Jennifer Bryan. 2020. <em>Usethis: Automate Package and Project Setup</em>. <a href="https://CRAN.R-project.org/package=usethis" class="uri">https://CRAN.R-project.org/package=usethis</a>.</p>
 </div>
 <div id="ref-R-pkgdown">
-<p>Wickham, Hadley, and Jay Hesselberth. 2019. <em>Pkgdown: Make Static Html Documentation for a Package</em>. <a href="https://CRAN.R-project.org/package=pkgdown" class="uri">https://CRAN.R-project.org/package=pkgdown</a>.</p>
+<p>Wickham, Hadley, and Jay Hesselberth. 2020. <em>Pkgdown: Make Static Html Documentation for a Package</em>. <a href="https://CRAN.R-project.org/package=pkgdown" class="uri">https://CRAN.R-project.org/package=pkgdown</a>.</p>
 </div>
 <div id="ref-R-devtools">
-<p>Wickham, Hadley, Jim Hester, and Winston Chang. 2019. <em>Devtools: Tools to Make Developing R Packages Easier</em>. <a href="https://CRAN.R-project.org/package=devtools" class="uri">https://CRAN.R-project.org/package=devtools</a>.</p>
+<p>Wickham, Hadley, Jim Hester, and Winston Chang. 2020. <em>Devtools: Tools to Make Developing R Packages Easier</em>. <a href="https://CRAN.R-project.org/package=devtools" class="uri">https://CRAN.R-project.org/package=devtools</a>.</p>
 </div>
 <div id="ref-R-readr">
 <p>Wickham, Hadley, Jim Hester, and Romain Francois. 2018. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr" class="uri">https://CRAN.R-project.org/package=readr</a>.</p>
 </div>
 <div id="ref-R-bookdown">
-<p>Xie, Yihui. 2019a. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown" class="uri">https://CRAN.R-project.org/package=bookdown</a>.</p>
+<p>Xie, Yihui. 2020a. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown" class="uri">https://CRAN.R-project.org/package=bookdown</a>.</p>
 </div>
 <div id="ref-R-knitr">
-<p>———. 2019b. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in R</em>. <a href="https://CRAN.R-project.org/package=knitr" class="uri">https://CRAN.R-project.org/package=knitr</a>.</p>
+<p>———. 2020b. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in R</em>. <a href="https://CRAN.R-project.org/package=knitr" class="uri">https://CRAN.R-project.org/package=knitr</a>.</p>
 </div>
 </div>
 </div>
@@ -226,17 +227,11 @@ $(document).ready(function () {
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <div id="tocnav">
-      <h2 class="hasAnchor">
-<a href="#tocnav" class="anchor"></a>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-<li><a href="#build-a-reference-page">Build a reference page</a></li>
-      <li><a href="#add-references-to-this-page">Add references to this page</a></li>
-      </ul>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
 </div>
-      </div>
 
 </div>
 

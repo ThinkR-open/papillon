@@ -6,13 +6,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Create a book from vignettes with bookdown • chameleon</title>
-<!-- jquery --><script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="../cosmo.css" rel="stylesheet">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script><!-- Bootstrap --><link href="../cosmo.css" rel="stylesheet">
 <link href="../thinkr.css" rel="stylesheet">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Create a book from vignettes with bookdown">
-<meta property="og:description" content="">
+<meta property="og:description" content="chameleon">
 <meta name="twitter:card" content="summary">
 <!-- mathjax
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
@@ -35,7 +36,7 @@
 </script>
 -->
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -95,7 +96,7 @@
 </div>
         </li>
         <li>
-  <a href="https://github.com/Thinkr-open/chameleon">
+  <a href="https://github.com/Thinkr-open/chameleon/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -113,7 +114,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Create a book from vignettes with bookdown</h1>
+      <h1 data-toc-skip>Create a book from vignettes with bookdown</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/Thinkr-open/chameleon/blob/master/vignettes/aa-bookdown-from-vignettes.Rmd"><code>vignettes/aa-bookdown-from-vignettes.Rmd</code></a></small>
@@ -134,7 +135,7 @@ $(document).ready(function () {
 <h2 class="hasAnchor">
 <a href="#create-empty-book" class="anchor"></a>Create empty book</h2>
 <p>Use <code>create_book</code> with <code>clean = TRUE</code> to remove example Rmd files. You will use your vignettes to fill the book, you do not need example files. Only “index.Rmd” file is kept.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">chameleon<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/chameleon/man/create_book.html">create_book</a></span>(<span class="dt">path =</span> <span class="st">"inst/report"</span>, <span class="dt">clean =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="kw pkg">chameleon</span><span class="kw ns">::</span><span class="fu"><a href="../reference/create_book.html">create_book</a></span>(<span class="kw">path</span> <span class="kw">=</span> <span class="st">"inst/report"</span>, <span class="kw">clean</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
 <ul>
 <li>Modify the index page (“index.Rmd”) with presentation of the package and/or book.</li>
 </ul>
@@ -148,8 +149,8 @@ $(document).ready(function () {
 <li>Each vignette should start with a level 1 title (<code># Title 1</code>) and be followed by titles with lower levels</li>
 <li>Book directory can be cleaned before/after running the book. Only “index.Rmd” and “zzz-references.Rmd” files are kept if exist.</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">chameleon<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/chameleon/man/build_book.html">build_book</a></span>(<span class="dt">path =</span> <span class="st">"inst/report"</span>, <span class="dt">path.v =</span> <span class="st">"vignettes"</span>,</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">            <span class="dt">output_format =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"bookdown::gitbook"</span>, <span class="st">"bookdown::pdf_book"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="kw pkg">chameleon</span><span class="kw ns">::</span><span class="fu"><a href="../reference/build_book.html">build_book</a></span>(<span class="kw">path</span> <span class="kw">=</span> <span class="st">"inst/report"</span>, <span class="kw">path.v</span> <span class="kw">=</span> <span class="st">"vignettes"</span>,
+            <span class="kw">output_format</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"bookdown::gitbook"</span>, <span class="st">"bookdown::pdf_book"</span>))</pre></body></html></div>
 </div>
 <div id="create-short-book-with-index-and-references-only" class="section level2">
 <h2 class="hasAnchor">
@@ -161,37 +162,25 @@ $(document).ready(function () {
 <h2 class="hasAnchor">
 <a href="#help-user-find-the-userguides" class="anchor"></a>Help user find the userguides</h2>
 <p>Function <code><a href="../reference/open_guide_function.html">open_guide_function()</a></code> adds function <code>open_guide()</code> inside your package that will open the userguide on demand.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">chameleon<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/chameleon/man/open_guide_function.html">open_guide_function</a></span>(<span class="dt">path =</span> <span class="st">"inst/report"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="kw pkg">chameleon</span><span class="kw ns">::</span><span class="fu"><a href="../reference/open_guide_function.html">open_guide_function</a></span>(<span class="kw">path</span> <span class="kw">=</span> <span class="st">"inst/report"</span>)</pre></body></html></div>
 <p>Users of your package (<code>pkg</code>) can now have access to the books using:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">pkg<span class="op">::</span><span class="kw">open_guide</span>(<span class="st">"html"</span>)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">pkg<span class="op">::</span><span class="kw">open_guide</span>(<span class="st">"pdf"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="kw pkg">pkg</span><span class="kw ns">::</span><span class="fu">open_guide</span>(<span class="st">"html"</span>)
+<span class="kw pkg">pkg</span><span class="kw ns">::</span><span class="fu">open_guide</span>(<span class="st">"pdf"</span>)</pre></body></html></div>
 <p>Add these in your documentation and/or add a message when loading the package with this function inside your package:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co">#' @title .onAttach</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#' @noRd</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">.onAttach &lt;-<span class="st"> </span><span class="cf">function</span>(libname, pkgname) {</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">  <span class="kw"><a href="https://rdrr.io/r/base/message.html">message</a></span>(<span class="st">"Read the report with deeptools::open_guide()"</span>)</a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="co">#' @title .onAttach</span>
+<span class="co">#' @noRd</span>
+<span class="no">.onAttach</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">libname</span>, <span class="no">pkgname</span>) {
+  <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span>(<span class="st">"Read the report with deeptools::open_guide()"</span>)
+}</pre></body></html></div>
 </div>
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <div id="tocnav">
-      <h2 class="hasAnchor">
-<a href="#tocnav" class="anchor"></a>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-<li>
-<a href="#create-book-repository-inside-a-package">Create book repository inside a package</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#create-empty-book">Create empty book</a></li>
-      <li><a href="#build-the-book-based-on-vignettes">Build the book based on vignettes</a></li>
-      <li><a href="#create-short-book-with-index-and-references-only">Create short book with index and references only</a></li>
-      <li><a href="#help-user-find-the-userguides">Help user find the userguides</a></li>
-      </ul>
-</li>
-      </ul>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
 </div>
-      </div>
 
 </div>
 
