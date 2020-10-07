@@ -124,13 +124,20 @@
 <div id="chameleon" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#chameleon" class="anchor"></a>chameleon</h1></div>
-<p>The goal of {chameleon} is to build and highlight package documentation with customized templates.</p>
+<!-- description: start -->
+<p>This is package {chameleon}: Build And Highlight Package Documentation With Customized Templates.<br>
+You are using version 0.0.1.9000. <!-- description: end --></p>
 <p><em>Complete documentation in the {pkgdown} site: <a href="https://thinkr-open.github.io/chameleon/" class="uri">https://thinkr-open.github.io/chameleon/</a></em></p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="co"># install.packages("remotes")</span>
-<span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"ThinkR-open/chameleon"</span>)</pre></div>
+<!-- install: start -->
+<p>The list of dependencies required to install this package is: attachment, bookdown, cli, crayon, desc, devtools, knitr, magrittr, pkgdown, readr, remotes, rmarkdown, shiny, usethis, utils.</p>
+<p>To install the package, you can run the following script</p>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="co"># install.packages("remotes")</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span>repo <span class="op">=</span> <span class="st">"Thinkr-open/chameleon"</span><span class="op">)</span></pre></div>
+<!-- install: end -->
 </div>
 <div id="examples" class="section level2">
 <h2 class="hasAnchor">
@@ -139,11 +146,13 @@
 <h3 class="hasAnchor">
 <a href="#build-a-book-from-vignettes-inside-a-package" class="anchor"></a>Build a book from vignettes inside a package</h3>
 <p>You can use <code><a href="reference/create_book.html">create_book()</a></code> using your own template basis. By default, it uses {bookdown} site template. You can use it to build your own.</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="no">template</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"rstudio/templates/project/resources"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"bookdown"</span>)
-<span class="fu"><a href="reference/create_book.html">create_book</a></span>(<span class="kw">path</span> <span class="kw">=</span> <span class="st">"inst/report"</span>, <span class="kw">clean</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-            <span class="kw">template</span> <span class="kw">=</span> <span class="no">template</span>)</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="va">template</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"rstudio/templates/project/resources"</span>, package <span class="op">=</span> <span class="st">"bookdown"</span><span class="op">)</span>
+<span class="fu"><a href="reference/create_book.html">create_book</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"inst/report"</span>, clean <span class="op">=</span> <span class="cn">TRUE</span>,
+            template <span class="op">=</span> <span class="va">template</span><span class="op">)</span></pre></div>
 <p>Help users find your book with function <code><a href="reference/open_guide_function.html">open_guide_function()</a></code>. This adds function <code>open_guide()</code> inside your package that will open the userguide (in HTML or PDF) on demand.</p>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="reference/open_guide_function.html">open_guide_function</a></span>(<span class="kw">path</span> <span class="kw">=</span> <span class="st">"inst/report"</span>)</pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="fu"><a href="reference/open_guide_function.html">open_guide_function</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"inst/report"</span><span class="op">)</span></pre></div>
 </div>
 <div id="build-a-pkgdown-site-inside-a-package" class="section level3">
 <h3 class="hasAnchor">
@@ -151,39 +160,58 @@
 <p>You can use <code><a href="reference/build_pkgdown.html">build_pkgdown()</a></code> using your own template basis. By default, it uses the {pkgdown} original template.<br>
 To use your own template, it is better to create a R package with all necessary files (See <a href="https://github.com/tidyverse/tidytemplate" class="uri">https://github.com/tidyverse/tidytemplate</a> as an example).</p>
 <p><em>You can then define your own <code>_pkgdown.yml</code> file that will call your template when building the site:</em></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="fu">template:</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">  <span class="fu">package:</span><span class="at"> mypackagetemplate</span></a></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="r"><span class="kw pkg">chameleon</span><span class="kw ns">::</span><span class="fu"><a href="reference/build_pkgdown.html">build_pkgdown</a></span>(
-  <span class="kw">lazy</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-  <span class="kw">yml</span> <span class="kw">=</span> <span class="st">"/pah/to/your/yaml/_pkgdown.yml"</span>,
-  <span class="kw">favicon</span> <span class="kw">=</span> <span class="st">"/path/to/your/favicon.ico"</span>,
-  <span class="kw">move</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-)</pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">template</span><span class="kw">:</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="at">  </span><span class="fu">package</span><span class="kw">:</span><span class="at"> mypackagetemplate</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="fu">chameleon</span><span class="fu">::</span><span class="fu"><a href="reference/build_pkgdown.html">build_pkgdown</a></span><span class="op">(</span>
+  lazy <span class="op">=</span> <span class="cn">TRUE</span>,
+  yml <span class="op">=</span> <span class="st">"/pah/to/your/yaml/_pkgdown.yml"</span>,
+  favicon <span class="op">=</span> <span class="st">"/path/to/your/favicon.ico"</span>,
+  move <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span></pre></div>
 <p>Help users find your pkgdown website with function <code><a href="reference/open_pkgdown_function.html">open_pkgdown_function()</a></code>. This adds function <code>open_pkgdown()</code> inside your package that will open the site on demand. <em>This may make your package not pass warnings in checks, but remember this is for internal or private use. For public use, you can publish your pkgdown site directly online.</em></p>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="kw pkg">chameleon</span><span class="kw ns">::</span><span class="fu"><a href="reference/open_pkgdown_function.html">open_pkgdown_function</a></span>()</pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="fu">chameleon</span><span class="fu">::</span><span class="fu"><a href="reference/open_pkgdown_function.html">open_pkgdown_function</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 </div>
 <div id="build-a-reference-page" class="section level3">
 <h3 class="hasAnchor">
 <a href="#build-a-reference-page" class="anchor"></a>Build a reference page</h3>
 <p>To award people hard working for open-source, it is always good to cite their work. In order to add an informative page in your Shiny applications for instance, you can create a html or markdown page listing all package dependencies used.</p>
-<div class="sourceCode" id="cb7"><pre class="r"><span class="kw pkg">chameleon</span><span class="kw ns">::</span><span class="fu"><a href="reference/create_pkg_biblio_file.html">create_pkg_biblio_file</a></span>(<span class="kw">to</span> <span class="kw">=</span> <span class="st">"html"</span>, <span class="kw">out.dir</span> <span class="kw">=</span> <span class="st">"inst"</span>)
+<div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="fu">chameleon</span><span class="fu">::</span><span class="fu"><a href="reference/create_pkg_biblio_file.html">create_pkg_biblio_file</a></span><span class="op">(</span>to <span class="op">=</span> <span class="st">"html"</span>, out.dir <span class="op">=</span> <span class="st">"inst"</span><span class="op">)</span>
 <span class="co"># Can be included in a shiny app using </span>
-<span class="kw pkg">shiny</span><span class="kw ns">::</span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/reexports.html">includeHTML</a></span>(<span class="st">"bibliography.html"</span>)
+<span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/include.html">includeHTML</a></span><span class="op">(</span><span class="st">"bibliography.html"</span><span class="op">)</span>
 <span class="co"># OR</span>
-<span class="kw pkg">chameleon</span><span class="kw ns">::</span><span class="fu"><a href="reference/create_pkg_biblio_file.html">create_pkg_biblio_file</a></span>(<span class="kw">to</span> <span class="kw">=</span> <span class="st">"markdown"</span>)
+<span class="fu">chameleon</span><span class="fu">::</span><span class="fu"><a href="reference/create_pkg_biblio_file.html">create_pkg_biblio_file</a></span><span class="op">(</span>to <span class="op">=</span> <span class="st">"markdown"</span><span class="op">)</span>
 <span class="co"># Can be included in a shiny app using </span>
-<span class="kw pkg">shiny</span><span class="kw ns">::</span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/reexports.html">includeMarkdown</a></span>(<span class="st">"bibliography.md"</span>)</pre></div>
+<span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/include.html">includeMarkdown</a></span><span class="op">(</span><span class="st">"bibliography.md"</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="to-describe-your-package-and-how-to-install-it" class="section level2">
 <h2 class="hasAnchor">
 <a href="#to-describe-your-package-and-how-to-install-it" class="anchor"></a>To describe your package and how to install it</h2>
 <p>This can be useful to create your Readme for instance or to send the instructions file for your clients to install your package.</p>
-<div class="sourceCode" id="cb8"><pre class="r"><span class="no">path</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"DESCRIPTION"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"chameleon"</span>)
-<span class="no">out.dir</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span>()
-<span class="fu"><a href="reference/create_pkg_desc_file.html">create_pkg_desc_file</a></span>(<span class="no">path</span>, <span class="kw">source</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"archive"</span>), <span class="kw">to</span> <span class="kw">=</span> <span class="st">"html"</span>)</pre></div>
-<div class="sourceCode" id="cb9"><pre class="r"><span class="co"># Use with results="asis" in a Rmd</span>
-<span class="kw pkg">shiny</span><span class="kw ns">::</span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/reexports.html">includeHTML</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="no">out.dir</span>, <span class="st">"pkg_description.html"</span>))</pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit">
+<span class="va">path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"DESCRIPTION"</span>, package <span class="op">=</span> <span class="st">"chameleon"</span><span class="op">)</span>
+<span class="va">out.dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span><span class="op">(</span><span class="op">)</span>
+<span class="fu"><a href="reference/create_pkg_desc_file.html">create_pkg_desc_file</a></span><span class="op">(</span><span class="va">path</span>, source <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"archive"</span><span class="op">)</span>, to <span class="op">=</span> <span class="st">"html"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit">
+<span class="co"># Use with results="asis" in a Rmd</span>
+<span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/include.html">includeHTML</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">out.dir</span>, <span class="st">"pkg_description.html"</span><span class="op">)</span><span class="op">)</span></pre></div>
+</div>
+<div id="create-and-update-a-custom-readme-with-installation-instructions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#create-and-update-a-custom-readme-with-installation-instructions" class="anchor"></a>Create and update a custom README with installation instructions</h2>
+<ul>
+<li>
+<code>generate_readme()</code> uses {usethis} Readme template for packages and fill the installation instructions.<br>
+</li>
+<li>This function can be run anytime during project development as it will only update the description and installation parts</li>
+</ul>
+<!-- end list --><div class="sourceCode" id="cb10"><pre class="downlit">
+<span class="co">#usethis::use_readme_rmd</span>
+<span class="fu">chameleon</span><span class="fu">::</span><span class="fu"><a href="reference/generate_readme_rmd.html">generate_readme_rmd</a></span><span class="op">(</span><span class="op">)</span>
+<span class="fu">chameleon</span><span class="fu">::</span><span class="fu"><a href="reference/generate_readme_rmd.html">generate_readme_rmd</a></span><span class="op">(</span>parts <span class="op">=</span> <span class="st">"description"</span><span class="op">)</span></pre></div>
 <p>Please note that the ‘chameleon’ project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
@@ -224,7 +252,7 @@ To use your own template, it is better to create a R package with all necessary 
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="lifecycle"></a></li>
-<li><a href="https://travis-ci.org/ThinkR-open/chameleon"><img src="https://travis-ci.org/ThinkR-open/chameleon.svg?branch=master" alt="Travis build status"></a></li>
+<li><a href="https://github.com/ThinkR-open/chameleon/actions"><img src="https://github.com/ThinkR-open/chameleon/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 </ul>
 </div>
 </div>

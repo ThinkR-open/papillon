@@ -111,7 +111,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="aa-bookdown-from-vignettes_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Create a book from vignettes with bookdown</h1>
@@ -135,7 +135,8 @@ $(document).ready(function () {
 <h2 class="hasAnchor">
 <a href="#create-empty-book" class="anchor"></a>Create empty book</h2>
 <p>Use <code>create_book</code> with <code>clean = TRUE</code> to remove example Rmd files. You will use your vignettes to fill the book, you do not need example files. Only “index.Rmd” file is kept.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="kw pkg">chameleon</span><span class="kw ns">::</span><span class="fu"><a href="../reference/create_book.html">create_book</a></span>(<span class="kw">path</span> <span class="kw">=</span> <span class="st">"inst/report"</span>, <span class="kw">clean</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu">chameleon</span><span class="fu">::</span><span class="fu"><a href="../reference/create_book.html">create_book</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"inst/report"</span>, clean <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></pre></div>
 <ul>
 <li>Modify the index page (“index.Rmd”) with presentation of the package and/or book.</li>
 </ul>
@@ -149,8 +150,9 @@ $(document).ready(function () {
 <li>Each vignette should start with a level 1 title (<code># Title 1</code>) and be followed by titles with lower levels</li>
 <li>Book directory can be cleaned before/after running the book. Only “index.Rmd” and “zzz-references.Rmd” files are kept if exist.</li>
 </ul>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="kw pkg">chameleon</span><span class="kw ns">::</span><span class="fu"><a href="../reference/build_book.html">build_book</a></span>(<span class="kw">path</span> <span class="kw">=</span> <span class="st">"inst/report"</span>, <span class="kw">path.v</span> <span class="kw">=</span> <span class="st">"vignettes"</span>,
-            <span class="kw">output_format</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"bookdown::gitbook"</span>, <span class="st">"bookdown::pdf_book"</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="fu">chameleon</span><span class="fu">::</span><span class="fu"><a href="../reference/build_book.html">build_book</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"inst/report"</span>, path.v <span class="op">=</span> <span class="st">"vignettes"</span>,
+            output_format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"bookdown::gitbook"</span>, <span class="st">"bookdown::pdf_book"</span><span class="op">)</span><span class="op">)</span></pre></div>
 </div>
 <div id="create-short-book-with-index-and-references-only" class="section level2">
 <h2 class="hasAnchor">
@@ -162,16 +164,19 @@ $(document).ready(function () {
 <h2 class="hasAnchor">
 <a href="#help-user-find-the-userguides" class="anchor"></a>Help user find the userguides</h2>
 <p>Function <code><a href="../reference/open_guide_function.html">open_guide_function()</a></code> adds function <code>open_guide()</code> inside your package that will open the userguide on demand.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="kw pkg">chameleon</span><span class="kw ns">::</span><span class="fu"><a href="../reference/open_guide_function.html">open_guide_function</a></span>(<span class="kw">path</span> <span class="kw">=</span> <span class="st">"inst/report"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="fu">chameleon</span><span class="fu">::</span><span class="fu"><a href="../reference/open_guide_function.html">open_guide_function</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"inst/report"</span><span class="op">)</span></pre></div>
 <p>Users of your package (<code>pkg</code>) can now have access to the books using:</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="kw pkg">pkg</span><span class="kw ns">::</span><span class="fu">open_guide</span>(<span class="st">"html"</span>)
-<span class="kw pkg">pkg</span><span class="kw ns">::</span><span class="fu">open_guide</span>(<span class="st">"pdf"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="fu">pkg</span><span class="fu">::</span><span class="fu">open_guide</span><span class="op">(</span><span class="st">"html"</span><span class="op">)</span>
+<span class="fu">pkg</span><span class="fu">::</span><span class="fu">open_guide</span><span class="op">(</span><span class="st">"pdf"</span><span class="op">)</span></pre></div>
 <p>Add these in your documentation and/or add a message when loading the package with this function inside your package:</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="co">#' @title .onAttach</span>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="co">#' @title .onAttach</span>
 <span class="co">#' @noRd</span>
-<span class="no">.onAttach</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">libname</span>, <span class="no">pkgname</span>) {
-  <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span>(<span class="st">"Read the report with deeptools::open_guide()"</span>)
-}</pre></body></html></div>
+<span class="va">.onAttach</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">libname</span>, <span class="va">pkgname</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="st">"Read the report with deeptools::open_guide()"</span><span class="op">)</span>
+<span class="op">}</span></pre></div>
 </div>
 </div>
   </div>

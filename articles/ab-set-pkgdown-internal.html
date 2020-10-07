@@ -111,7 +111,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="ab-set-pkgdown-internal_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Create a pkgdown site inside your package</h1>
@@ -141,23 +141,27 @@ $(document).ready(function () {
 <li>You can use your own favicon with parameter <code>favicon</code>
 </li>
 </ul>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="kw pkg">chameleon</span><span class="kw ns">::</span><span class="fu"><a href="../reference/build_pkgdown.html">build_pkgdown</a></span>(
-  <span class="kw">move</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">clean_before</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu">chameleon</span><span class="fu">::</span><span class="fu"><a href="../reference/build_pkgdown.html">build_pkgdown</a></span><span class="op">(</span>
+  move <span class="op">=</span> <span class="cn">TRUE</span>, clean_before <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span></pre></div>
 </div>
 <div id="help-user-find-the-site" class="section level2">
 <h2 class="hasAnchor">
 <a href="#help-user-find-the-site" class="anchor"></a>Help user find the site</h2>
 <p>Function <code><a href="../reference/open_pkgdown_function.html">open_pkgdown_function()</a></code> adds function <code>open_pkgdown()</code> inside your package that will open the userguide on demand.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="kw pkg">chameleon</span><span class="kw ns">::</span><span class="fu"><a href="../reference/open_pkgdown_function.html">open_pkgdown_function</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="fu">chameleon</span><span class="fu">::</span><span class="fu"><a href="../reference/open_pkgdown_function.html">open_pkgdown_function</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>Users of your package (<code>pkg</code>) can now have access to the site using:</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="kw pkg">pkg</span><span class="kw ns">::</span><span class="fu">open_pkgdown</span>()</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="fu">pkg</span><span class="fu">::</span><span class="fu">open_pkgdown</span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>Add these in your documentation and/or add a message when loading the package with this function inside your package:</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="co">#' @title .onAttach</span>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="co">#' @title .onAttach</span>
 <span class="co">#' @noRd</span>
-<span class="no">.onAttach</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">libname</span>, <span class="no">pkgname</span>) {
-  <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span>(<span class="st">"Open the HTML documentation with deeptools::open_pkgdown()"</span>)
-}</pre></body></html></div>
+<span class="va">.onAttach</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">libname</span>, <span class="va">pkgname</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="st">"Open the HTML documentation with deeptools::open_pkgdown()"</span><span class="op">)</span>
+<span class="op">}</span></pre></div>
 </div>
 </div>
   </div>
