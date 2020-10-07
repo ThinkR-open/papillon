@@ -4,7 +4,7 @@ output: github_document
 
 <!-- badges: start -->
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Travis build status](https://travis-ci.org/ThinkR-open/chameleon.svg?branch=master)](https://travis-ci.org/ThinkR-open/chameleon)
+[![R build status](https://github.com/ThinkR-open/chameleon/workflows/R-CMD-check/badge.svg)](https://github.com/ThinkR-open/chameleon/actions)
 <!-- badges: end -->
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->

@@ -2,34 +2,46 @@
 <!-- badges: start -->
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Travis build
-status](https://travis-ci.org/ThinkR-open/chameleon.svg?branch=master)](https://travis-ci.org/ThinkR-open/chameleon)
+[![R build
+status](https://github.com/ThinkR-open/chameleon/workflows/R-CMD-check/badge.svg)](https://github.com/ThinkR-open/chameleon/actions)
 <!-- badges: end -->
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # chameleon
 
-The goal of {chameleon} is to build and highlight package documentation
-with customized templates.
+<!-- description: start -->
+
+This is package {chameleon}: Build And Highlight Package Documentation
+With Customized Templates.  
+You are using version 0.0.1.9000. <!-- description: end -->
 
 *Complete documentation in the {pkgdown} site:
 <https://thinkr-open.github.io/chameleon/>*
 
 ## Installation
 
+<!-- install: start -->
+
+The list of dependencies required to install this package is:
+attachment, bookdown, cli, crayon, desc, devtools, knitr, magrittr,
+pkgdown, readr, remotes, rmarkdown, shiny, usethis, utils.
+
+To install the package, you can run the following script
+
 ``` r
 # install.packages("remotes")
-remotes::install_github("ThinkR-open/chameleon")
+remotes::install_github(repo = "Thinkr-open/chameleon")
 ```
+
+<!-- install: end -->
 
 ## Examples
 
 ### Build a book from vignettes inside a package
 
 You can use `create_book()` using your own template basis. By default,
-it uses {bookdown} site template. You can use it to build your
-own.
+it uses {bookdown} site template. You can use it to build your own.
 
 ``` r
 template <- system.file("rstudio/templates/project/resources", package = "bookdown")
@@ -112,6 +124,21 @@ create_pkg_desc_file(path, source = c("archive"), to = "html")
 ``` r
 # Use with results="asis" in a Rmd
 shiny::includeHTML(file.path(out.dir, "pkg_description.html"))
+```
+
+## Create and update a custom README with installation instructions
+
+  - `generate_readme()` uses {usethis} Readme template for packages and
+    fill the installation instructions.  
+  - This function can be run anytime during project development as it
+    will only update the description and installation parts
+
+<!-- end list -->
+
+``` r
+#usethis::use_readme_rmd
+chameleon::generate_readme_rmd()
+chameleon::generate_readme_rmd(parts = "description")
 ```
 
 Please note that the ‘chameleon’ project is released with a [Contributor
