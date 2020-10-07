@@ -64,5 +64,5 @@ devtools::check(vignettes = TRUE)
 
 # CI
 usethis::use_travis()
-usethis::use_github_action_check_full()
+usethis::use_github_action_check_standard()
 usethis::use_github_action("pkgdown")
