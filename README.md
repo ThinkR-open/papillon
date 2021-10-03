@@ -1,6 +1,8 @@
 
 <!-- badges: start -->
 
+![cod cov](http://$SOME_BACKET.storage.googleapis.com/$PROJECT_NAME/codcov.svg)
+
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R build
 status](https://github.com/ThinkR-open/chameleon/workflows/R-CMD-check/badge.svg)](https://github.com/ThinkR-open/chameleon/actions)
