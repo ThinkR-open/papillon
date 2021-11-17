@@ -79,7 +79,7 @@ build_book <- function(path = "inst/report", path.v = "vignettes",
 
   # Build books
   bookdown::clean_book(clean)
-  lapply(output_format, function(x) bookdown::render_book("", x))
+  lapply(output_format, function(x) bookdown::render_book(output_format = x))
 
   # Clean Rmd after
   if (isTRUE(clean_after) && length(to_clean_after) > 0) {
