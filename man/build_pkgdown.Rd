@@ -4,8 +4,15 @@
 \alias{build_pkgdown}
 \title{Build pkgdown site and move to inst}
 \usage{
-build_pkgdown(move = TRUE, clean_before = TRUE, clean_after = TRUE,
-  yml, favicon, preview = NA, ...)
+build_pkgdown(
+  move = TRUE,
+  clean_before = TRUE,
+  clean_after = TRUE,
+  yml,
+  favicon,
+  preview = NA,
+  ...
+)
 }
 \arguments{
 \item{move}{Logical. Whether to move the "docs" folder in "inst" to be kept in the package}

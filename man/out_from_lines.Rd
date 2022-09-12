@@ -4,8 +4,13 @@
 \alias{out_from_lines}
 \title{write output in utf8}
 \usage{
-out_from_lines(out_lines, to = c("html", "markdown", "raw"), out.dir,
-  filename = "file", edit = TRUE)
+out_from_lines(
+  out_lines,
+  to = c("html", "markdown", "raw"),
+  out.dir,
+  filename = "file",
+  edit = TRUE
+)
 }
 \arguments{
 \item{out_lines}{vector of html lines to write}

@@ -4,9 +4,13 @@
 \alias{generate_readme_rmd}
 \title{Create and update a custom README.Rmd with installation instructions}
 \usage{
-generate_readme_rmd(base_path = usethis::proj_get(),
-  parts = c("description", "installation"), source = c("archive",
-  "github", "git"), edit = TRUE, url)
+generate_readme_rmd(
+  base_path = usethis::proj_get(),
+  parts = c("description", "installation"),
+  source = c("archive", "github", "git"),
+  edit = TRUE,
+  url
+)
 }
 \arguments{
 \item{base_path}{Path of the package to generate Readme from}

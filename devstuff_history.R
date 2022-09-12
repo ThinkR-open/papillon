@@ -6,7 +6,7 @@ usethis::use_code_of_conduct()
 
 # Documentation
 usethis::use_readme_rmd()
-chameleon::generate_readme_rmd(parts = "description")
+papillon::generate_readme_rmd(parts = "description")
 usethis::use_vignette("aa-bookdown-from-vignettes")
 usethis::use_vignette("ab-set-pkgdown-internal")
 usethis::use_vignette("ac-create-bibliography-file")
@@ -15,13 +15,16 @@ usethis::use_vignette("ad-create-description-file")
 # Packages ----
 usethis::use_pipe()
 # devtools::install_github("ThinkR-open/attachment")
-attachment::att_to_description()
+attachment::att_amend_desc(
+  pkg_ignore = c("devtools", "remotes"), 
+  extra.suggests = c("devtools", "remotes"))
 # attachment::create_dependencies_file()
 
 # Documentation ----
 ## _pkgdown
-chameleon::open_pkgdown_function(path = "docs")
-chameleon::build_pkgdown(
+# install.packages("thinkrtemplate", repos = 'https://thinkr-open.r-universe.dev')
+papillon::open_pkgdown_function(path = "docs")
+papillon::build_pkgdown(
   lazy = TRUE,
   yml = system.file("pkgdown/_pkgdown.yml", package = "thinkridentity"),
   favicon = system.file("pkgdown/favicon.ico", package = "thinkridentity"),
@@ -32,30 +35,10 @@ chameleon::build_pkgdown(
 usethis::use_git_ignore("docs")
 usethis::use_git_ignore("inst/docs")
 
-## __ deploy {pkgdown} on rsconnect
-usethis::use_git_ignore("docs/rsconnect")
-usethis::use_git_ignore("inst/docs/rsconnect")
-usethis::use_git_ignore("rsconnect")
-
-rsconnect::accounts()
-account_name <- rstudioapi::showPrompt("Rsconnect account", "Please enter your username:", "name")
-account_server <- rstudioapi::showPrompt("Rsconnect server", "Please enter your server name:", "1.1.1.1")
-origwd <- setwd("inst/docs")
-rsconnect::deployApp(
-  ".",                       # the directory containing the content
-  appFiles = list.files(".", recursive = TRUE), # the list of files to include as dependencies (all of them)
-  appPrimaryDoc = "index.html",                 # the primary file
-  appName = "chameleon",                   # name of the endpoint (unique to your account on Connect)
-  appTitle = "chameleon",                  # display name for the content
-  account = account_name,                # your Connect username
-  server = account_server                    # the Connect server, see rsconnect::accounts()
-)
-setwd(origwd)
-
 # _deploy pkgdown on Travis
 
 # Bibliography file
-chameleon::create_pkg_biblio_file(to = "html", out.dir = "inst", edit = FALSE)
+papillon::create_pkg_biblio_file(to = "html", out.dir = "inst", edit = FALSE)
 
 # Utils for dev
 devtools::install(upgrade = "never")
@@ -63,6 +46,5 @@ devtools::install(upgrade = "never")
 devtools::check(vignettes = TRUE)
 
 # CI
-usethis::use_travis()
 usethis::use_github_action_check_standard()
 usethis::use_github_action("pkgdown")

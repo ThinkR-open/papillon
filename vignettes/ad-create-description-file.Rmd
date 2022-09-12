@@ -21,7 +21,7 @@ comment = "#>"
 ```
 
 ```{r setup}
-library(chameleon)
+library(papillon)
 ```
 
 ## To describe your package and how to install it
@@ -29,7 +29,7 @@ library(chameleon)
 This can be useful to create your Readme for instance or to send the instructions file for your clients to install your package.
 
 ```{r}
-path <- system.file("DESCRIPTION", package = "chameleon")
+path <- system.file("DESCRIPTION", package = "papillon")
 out.dir <- tempdir()
 create_pkg_desc_file(path, source = c("archive"), to = "html")
 ```
@@ -44,6 +44,6 @@ shiny::includeHTML(file.path(out.dir, "pkg_description.html"))
 - This function can be run anytime during project development as it will only update the description and installation parts
 
 ```{r, eval=FALSE}
-chameleon::generate_readme_rmd()
+papillon::generate_readme_rmd()
 ```
 

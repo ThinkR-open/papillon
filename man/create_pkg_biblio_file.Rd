@@ -4,9 +4,14 @@
 \alias{create_pkg_biblio_file}
 \title{Create bibliography md file from a package DESCRIPTION file}
 \usage{
-create_pkg_biblio_file(path = "DESCRIPTION", out.dir,
-  output = c("packages", "references"), to = c("html", "markdown"),
-  custom.md, edit = TRUE)
+create_pkg_biblio_file(
+  path = "DESCRIPTION",
+  out.dir,
+  output = c("packages", "references"),
+  to = c("html", "markdown"),
+  custom.md,
+  edit = TRUE
+)
 }
 \arguments{
 \item{path}{Path to DESCRIPTION file}

@@ -96,7 +96,7 @@ open_guide_function <- function(path = "inst/report") {
 
   pkg_name <- read.dcf("DESCRIPTION")[1,"Package"]
   report_path <- strsplit(path, "inst/")[[1]][2]
-  fun_template <- system.file("templates/open_userguide_template.R", package = "chameleon")
+  fun_template <- system.file("templates/open_userguide_template.R", package = "papillon")
 
   cat(paste(readLines(fun_template), collapse = "\n"),
       "\n",

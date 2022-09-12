@@ -3,21 +3,21 @@
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R build
-status](https://github.com/ThinkR-open/chameleon/workflows/R-CMD-check/badge.svg)](https://github.com/ThinkR-open/chameleon/actions)
+status](https://github.com/ThinkR-open/papillon/workflows/R-CMD-check/badge.svg)](https://github.com/ThinkR-open/papillon/actions)
 <!-- badges: end -->
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# chameleon
+# papillon
 
 <!-- description: start -->
 
-This is package {chameleon}: Build And Highlight Package Documentation
+This is package {papillon}: Build And Highlight Package Documentation
 With Customized Templates.  
 You are using version 0.0.1.9000. <!-- description: end -->
 
 *Complete documentation in the {pkgdown} site:
-<https://thinkr-open.github.io/chameleon/>*
+<https://thinkr-open.github.io/papillon/>*
 
 ## Installation
 
@@ -31,7 +31,7 @@ To install the package, you can run the following script
 
 ``` r
 # install.packages("remotes")
-remotes::install_github(repo = "Thinkr-open/chameleon")
+remotes::install_github(repo = "Thinkr-open/papillon")
 ```
 
 <!-- install: end -->
@@ -74,7 +74,7 @@ template:
 ```
 
 ``` r
-chameleon::build_pkgdown(
+papillon::build_pkgdown(
   lazy = TRUE,
   yml = "/pah/to/your/yaml/_pkgdown.yml",
   favicon = "/path/to/your/favicon.ico",
@@ -90,7 +90,7 @@ or private use. For public use, you can publish your pkgdown site
 directly online.*
 
 ``` r
-chameleon::open_pkgdown_function()
+papillon::open_pkgdown_function()
 ```
 
 ### Build a reference page
@@ -101,11 +101,11 @@ applications for instance, you can create a html or markdown page
 listing all package dependencies used.
 
 ``` r
-chameleon::create_pkg_biblio_file(to = "html", out.dir = "inst")
+papillon::create_pkg_biblio_file(to = "html", out.dir = "inst")
 # Can be included in a shiny app using 
 shiny::includeHTML("bibliography.html")
 # OR
-chameleon::create_pkg_biblio_file(to = "markdown")
+papillon::create_pkg_biblio_file(to = "markdown")
 # Can be included in a shiny app using 
 shiny::includeMarkdown("bibliography.md")
 ```
@@ -116,7 +116,7 @@ This can be useful to create your Readme for instance or to send the
 instructions file for your clients to install your package.
 
 ``` r
-path <- system.file("DESCRIPTION", package = "chameleon")
+path <- system.file("DESCRIPTION", package = "papillon")
 out.dir <- tempdir()
 create_pkg_desc_file(path, source = c("archive"), to = "html")
 ```
@@ -137,10 +137,10 @@ shiny::includeHTML(file.path(out.dir, "pkg_description.html"))
 
 ``` r
 #usethis::use_readme_rmd
-chameleon::generate_readme_rmd()
-chameleon::generate_readme_rmd(parts = "description")
+papillon::generate_readme_rmd()
+papillon::generate_readme_rmd(parts = "description")
 ```
 
-Please note that the ‘chameleon’ project is released with a [Contributor
+Please note that the ‘papillon’ project is released with a [Contributor
 Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,
 you agree to abide by its terms.
