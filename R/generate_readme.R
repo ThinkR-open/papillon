@@ -34,15 +34,15 @@ generate_readme_rmd <- function(
   # Create skeleton
   if (!file.exists(readme_path)) {
     usethis::use_template("package-README", "README.Rmd", data = data, ignore = TRUE, 
-                          open = FALSE, package = "chameleon")
+                          open = FALSE, package = "papillon")
   }
   
   # Modify skeleton
   ## Read Readme
   readme <- readLines(file.path(base_path, "README.Rmd"))
   
-  ## Create content with chameleon
-  cham_desc_file <- chameleon::create_pkg_desc_file(source = source, to = "raw", edit = FALSE)
+  ## Create content with papillon
+  cham_desc_file <- papillon::create_pkg_desc_file(source = source, to = "raw", edit = FALSE)
   cham_desc <- readLines(cham_desc_file)
   
   # Modify content

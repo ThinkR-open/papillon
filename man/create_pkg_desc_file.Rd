@@ -4,9 +4,14 @@
 \alias{create_pkg_desc_file}
 \title{Create package description file}
 \usage{
-create_pkg_desc_file(path = "DESCRIPTION", source = c("archive",
-  "github", "git"), url, out.dir, to = c("html", "markdown", "raw"),
-  edit = TRUE)
+create_pkg_desc_file(
+  path = "DESCRIPTION",
+  source = c("archive", "github", "git"),
+  url,
+  out.dir,
+  to = c("html", "markdown", "raw"),
+  edit = TRUE
+)
 }
 \arguments{
 \item{path}{Path to description file}

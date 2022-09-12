@@ -27,7 +27,7 @@ knitr::opts_chunk$set(
 Use `create_book` with `clean = TRUE` to remove example Rmd files. You will use your vignettes to fill the book, you do not need example files. Only "index.Rmd" file is kept.
 
 ```{r, eval=FALSE}
-chameleon::create_book(path = "inst/report", clean = TRUE)
+papillon::create_book(path = "inst/report", clean = TRUE)
 ```
 
 - Modify the index page ("index.Rmd") with presentation of the package and/or book.
@@ -41,7 +41,7 @@ Function `build_book()` will copy your vignettes in the book directory and build
 - Book directory can be cleaned before/after running the book. Only "index.Rmd" and "zzz-references.Rmd" files are kept if exist.
 
 ```{r, eval=FALSE}
-chameleon::build_book(path = "inst/report", path.v = "vignettes",
+papillon::build_book(path = "inst/report", path.v = "vignettes",
             output_format = c("bookdown::gitbook", "bookdown::pdf_book"))
 ```
 
@@ -57,7 +57,7 @@ To do so, you need to fill the index.Rmd file with necessary information and cre
 Function `open_guide_function()` adds function `open_guide()` inside your package that will open the userguide on demand.
 
 ```{r, eval=FALSE}
-chameleon::open_guide_function(path = "inst/report")
+papillon::open_guide_function(path = "inst/report")
 ```
 
 Users of your package (`pkg`) can now have access to the books using:  

@@ -30,7 +30,7 @@ Use `build_pkgdown` with default option to build the {pkgdown} site and copy it 
 - You can use your own favicon with parameter `favicon`
 
 ```{r, eval=FALSE}
-chameleon::build_pkgdown(
+papillon::build_pkgdown(
   move = TRUE, clean_before = TRUE
 )
 ```
@@ -40,7 +40,7 @@ chameleon::build_pkgdown(
 Function `open_pkgdown_function()` adds function `open_pkgdown()` inside your package that will open the userguide on demand.
 
 ```{r, eval=FALSE}
-chameleon::open_pkgdown_function()
+papillon::open_pkgdown_function()
 ```
 
 Users of your package (`pkg`) can now have access to the site using:  

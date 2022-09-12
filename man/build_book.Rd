@@ -4,10 +4,15 @@
 \alias{build_book}
 \title{Build book from vignettes}
 \usage{
-build_book(path = "inst/report", path.v = "vignettes",
+build_book(
+  path = "inst/report",
+  path.v = "vignettes",
   output_format = c("bookdown::gitbook", "bookdown::pdf_document2"),
-  clean_before = TRUE, clean_after = TRUE,
-  keep_rmd = "index\\\\.Rmd$|zzz-references\\\\.Rmd$", clean = TRUE)
+  clean_before = TRUE,
+  clean_after = TRUE,
+  keep_rmd = "index\\\\.Rmd$|zzz-references\\\\.Rmd$",
+  clean = TRUE
+)
 }
 \arguments{
 \item{path}{Path of the book}

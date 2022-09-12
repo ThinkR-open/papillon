@@ -4,8 +4,14 @@
 \alias{create_biblio_file}
 \title{Create bibliography md file from a vector of packages}
 \usage{
-create_biblio_file(packages, out.dir, output = c("packages",
-  "references"), to = c("html", "markdown"), custom.md, edit = TRUE)
+create_biblio_file(
+  packages,
+  out.dir,
+  output = c("packages", "references"),
+  to = c("html", "markdown"),
+  custom.md,
+  edit = TRUE
+)
 }
 \arguments{
 \item{packages}{vector of packages names}

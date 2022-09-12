@@ -2,7 +2,7 @@
 ^LICENSE\.md$
 ^README\.Rmd$
 ^devstuff_history\.R$
-^chameleon\.Rproj$
+^papillon\.Rproj$
 ^\.Rproj\.user$
 ^docs$
 ^doc$
