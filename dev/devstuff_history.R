@@ -1,4 +1,4 @@
-usethis::use_build_ignore("devstuff_history.R")
+usethis::use_build_ignore("dev/")
 usethis::use_gpl3_license("ThinkR")
 usethis::use_git_ignore("*.Rproj")
 usethis::use_git_ignore(".Rhistory")
@@ -54,3 +54,7 @@ usethis::use_coverage()
 usethis::use_build_ignore("_pkgdown.yml")
 usethis::use_package_doc()
 usethis::use_code_of_conduct("codeofconduct@thinkr.fr")
+
+# Tests
+usethis::use_testthat()
+usethis::use_test("create_book")
