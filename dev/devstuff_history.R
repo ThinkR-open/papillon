@@ -47,9 +47,15 @@ devtools::check(vignettes = TRUE)
 
 # CI
 usethis::git_default_branch_rename()
-usethis::use_github_action_check_standard()
-usethis::use_github_action("pkgdown")
-usethis::use_github_action("test-coverage")
+# usethis::use_github_action_check_standard()
+name <- "check-standard"
+name <- "pkgdown"
+name <- "test-coverage"
+usethis::use_github_action(
+  name = name, 
+  url = glue::glue("https://raw.githubusercontent.com/r-lib/actions/v2/examples/{name}.yaml"))
+# usethis::use_github_action("pkgdown")
+# usethis::use_github_action("test-coverage")
 usethis::use_coverage()
 usethis::use_build_ignore("_pkgdown.yml")
 usethis::use_package_doc()
