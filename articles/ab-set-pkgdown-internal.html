@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Create a pkgdown site inside your package • chameleon</title>
+<title>Create a pkgdown site inside your package • papillon</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Bootstrap --><link href="../cosmo.css" rel="stylesheet">
 <link href="../thinkr.css" rel="stylesheet">
@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Create a pkgdown site inside your package">
-<meta property="og:description" content="chameleon">
+<meta property="og:description" content="papillon">
 <meta name="twitter:card" content="summary">
 <!-- mathjax
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
@@ -37,6 +37,8 @@
 -->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -48,24 +50,18 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">chameleon</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9000</span>
+        <a class="navbar-link" href="../index.html">papillon</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -96,8 +92,8 @@
 </div>
         </li>
         <li>
-  <a href="https://github.com/Thinkr-open/chameleon/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/Thinkr-open/papillon/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -111,13 +107,13 @@
 
       
 
-      </header><script src="ab-set-pkgdown-internal_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Create a pkgdown site inside your package</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Thinkr-open/chameleon/blob/master/vignettes/ab-set-pkgdown-internal.Rmd"><code>vignettes/ab-set-pkgdown-internal.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Thinkr-open/papillon/blob/HEAD/vignettes/ab-set-pkgdown-internal.Rmd" class="external-link"><code>vignettes/ab-set-pkgdown-internal.Rmd</code></a></small>
       <div class="hidden name"><code>ab-set-pkgdown-internal.Rmd</code></div>
 
     </div>
@@ -128,40 +124,48 @@
 $(document).ready(function () {
   window.initializeCodeFolding("show" === "show");
 });
-</script><div id="create-a-pkgdown-site-inside-your-package" class="section level1">
-<h1 class="hasAnchor">
-<a href="#create-a-pkgdown-site-inside-your-package" class="anchor"></a>Create a pkgdown site inside your package</h1>
-<div id="create-the-pkgdown" class="section level2">
-<h2 class="hasAnchor">
-<a href="#create-the-pkgdown" class="anchor"></a>Create the pkgdown</h2>
-<p>Use <code>build_pkgdown</code> with default option to build the {pkgdown} site and copy it in “inst” so that it is available in your package.</p>
+</script><div class="section level2">
+<h2 id="create-a-pkgdown-site-inside-your-package">Create a pkgdown site inside your package<a class="anchor" aria-label="anchor" href="#create-a-pkgdown-site-inside-your-package"></a>
+</h2>
+<div class="section level3">
+<h3 id="create-the-pkgdown">Create the pkgdown<a class="anchor" aria-label="anchor" href="#create-the-pkgdown"></a>
+</h3>
+<p>Use <code>build_pkgdown</code> with default option to build the
+{pkgdown} site and copy it in “inst” so that it is available in your
+package.</p>
 <ul>
-<li>You can use your own "_pkgdown.yml" with parameter <code>yml</code>
+<li>You can use your own “_pkgdown.yml” with parameter
+<code>yml</code>
 </li>
-<li>You can use your own favicon with parameter <code>favicon</code>
+<li>You can use your own favicon with parameter
+<code>favicon</code>
 </li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu">chameleon</span><span class="fu">::</span><span class="fu"><a href="../reference/build_pkgdown.html">build_pkgdown</a></span><span class="op">(</span>
-  move <span class="op">=</span> <span class="cn">TRUE</span>, clean_before <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">papillon</span><span class="fu">::</span><span class="fu"><a href="../reference/build_pkgdown.html">build_pkgdown</a></span><span class="op">(</span></span>
+<span>  move <span class="op">=</span> <span class="cn">TRUE</span>, clean_before <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="help-user-find-the-site" class="section level2">
-<h2 class="hasAnchor">
-<a href="#help-user-find-the-site" class="anchor"></a>Help user find the site</h2>
-<p>Function <code><a href="../reference/open_pkgdown_function.html">open_pkgdown_function()</a></code> adds function <code>open_pkgdown()</code> inside your package that will open the userguide on demand.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu">chameleon</span><span class="fu">::</span><span class="fu"><a href="../reference/open_pkgdown_function.html">open_pkgdown_function</a></span><span class="op">(</span><span class="op">)</span></pre></div>
-<p>Users of your package (<code>pkg</code>) can now have access to the site using:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu">pkg</span><span class="fu">::</span><span class="fu">open_pkgdown</span><span class="op">(</span><span class="op">)</span></pre></div>
-<p>Add these in your documentation and/or add a message when loading the package with this function inside your package:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="co">#' @title .onAttach</span>
-<span class="co">#' @noRd</span>
-<span class="va">.onAttach</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">libname</span>, <span class="va">pkgname</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="st">"Open the HTML documentation with deeptools::open_pkgdown()"</span><span class="op">)</span>
-<span class="op">}</span></pre></div>
+<div class="section level3">
+<h3 id="help-user-find-the-site">Help user find the site<a class="anchor" aria-label="anchor" href="#help-user-find-the-site"></a>
+</h3>
+<p>Function <code><a href="../reference/open_pkgdown_function.html">open_pkgdown_function()</a></code> adds function
+<code>open_pkgdown()</code> inside your package that will open the
+userguide on demand.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">papillon</span><span class="fu">::</span><span class="fu"><a href="../reference/open_pkgdown_function.html">open_pkgdown_function</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>Users of your package (<code>pkg</code>) can now have access to the
+site using:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">pkg</span><span class="fu">::</span><span class="fu">open_pkgdown</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>Add these in your documentation and/or add a message when loading the
+package with this function inside your package:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#' @title .onAttach</span></span>
+<span><span class="co">#' @noRd</span></span>
+<span><span class="va">.onAttach</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">libname</span>, <span class="va">pkgname</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="st">"Open the HTML documentation with deeptools::open_pkgdown()"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 </div>
 </div>
   </div>
@@ -177,13 +181,14 @@ $(document).ready(function () {
 
 
       <footer><div class="thinkr">
-  <p>chameleon is a  <strong>ThinkR</strong> package. Learn more at <a href="https://rtask.thinkr.fr">rtask.thinkr.fr</a>.</p>
+  <p></p>
+<p>Developed by Sébastien Rochette.</p>,<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
 <div class="author">
   <p>
-    Developed by Sébastien Rochette.
-    Site built by <a href="https://pkgdown.r-lib.org">pkgdown</a>.
+    Developed by .
+    Site built by <a href="https://pkgdown.r-lib.org" class="external-link">pkgdown</a>.
   </p>
 </div>
 
@@ -192,6 +197,8 @@ $(document).ready(function () {
 
   
 
+
+  
 
   </body>
 </html>
