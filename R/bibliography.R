@@ -11,7 +11,8 @@ create_pkg_biblio_file <- function(path = "DESCRIPTION",
                                    to = c("html", "markdown"),
                                    custom.md,
                                    edit = TRUE) {
-  if (missing(out.dir)) {out.dir <- tempdir()}
+  if (missing(out.dir)) {out.dir <- tempfile(pattern = "biblio")}
+  if (!dir.exists(out.dir)) {dir.create(out.dir, recursive = TRUE)}
   if (missing(custom.md)) {custom.md <- ""}
   pkg_dependencies <- attachment::att_from_description(path)
 
