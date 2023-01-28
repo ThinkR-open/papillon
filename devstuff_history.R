@@ -46,5 +46,11 @@ devtools::install(upgrade = "never")
 devtools::check(vignettes = TRUE)
 
 # CI
+usethis::git_default_branch_rename()
 usethis::use_github_action_check_standard()
 usethis::use_github_action("pkgdown")
+usethis::use_github_action("test-coverage")
+usethis::use_coverage()
+usethis::use_build_ignore("_pkgdown.yml")
+usethis::use_package_doc()
+usethis::use_code_of_conduct("codeofconduct@thinkr.fr")

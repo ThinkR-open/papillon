@@ -2,8 +2,9 @@
 <!-- badges: start -->
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![R build
-status](https://github.com/ThinkR-open/papillon/workflows/R-CMD-check/badge.svg)](https://github.com/ThinkR-open/papillon/actions)
+[![R-CMD-check](https://github.com/ThinkR-open/papillon/workflows/R-CMD-check/badge.svg)](https://github.com/ThinkR-open/papillon/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/ThinkR-open/papillon/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ThinkR-open/papillon?branch=main)
 <!-- badges: end -->
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -128,12 +129,10 @@ shiny::includeHTML(file.path(out.dir, "pkg_description.html"))
 
 ## Create and update a custom README with installation instructions
 
-  - `generate_readme()` uses {usethis} Readme template for packages and
-    fill the installation instructions.  
-  - This function can be run anytime during project development as it
-    will only update the description and installation parts
-
-<!-- end list -->
+- `generate_readme()` uses {usethis} Readme template for packages and
+  fill the installation instructions.  
+- This function can be run anytime during project development as it will
+  only update the description and installation parts
 
 ``` r
 #usethis::use_readme_rmd
@@ -141,6 +140,9 @@ papillon::generate_readme_rmd()
 papillon::generate_readme_rmd(parts = "description")
 ```
 
-Please note that the ‘papillon’ project is released with a [Contributor
-Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,
-you agree to abide by its terms.
+## Code of Conduct
+
+Please note that the papillon project is released with a [Contributor
+Code of
+Conduct](https://thinkr-open.github.io/papillon/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
