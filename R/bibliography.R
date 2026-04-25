@@ -66,9 +66,12 @@ create_biblio_file <- function(packages, out.dir,
     x = bib_lines[grep("PACKAGES_HERE", bib_lines)])
 
   # path to bib
+  # Use forward slashes: on Windows, tempdir() returns "C:\Users\...",
+  # and a substring like "\U..." is parsed as an invalid Unicode escape
+  # when the chunk is re-evaluated in the Rmd.
   bib_lines[grep("BIBPATH_HERE", bib_lines)] <- gsub(
     pattern = "BIBPATH_HERE",
-    replacement = paste0('"', dir_temp, '"'),
+    replacement = paste0('"', gsub("\\\\", "/", dir_temp), '"'),
     x = bib_lines[grep("BIBPATH_HERE", bib_lines)])
 
   # Link citation
